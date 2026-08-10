@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   VELOCITY PIXEL — Custom Design System CSS
+   ============================================ */
+
+/* --- Base Reset --- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-on-background font-body-md text-body-md antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-tertiary text-background;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #121315;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #43474d;
+    border: 1px solid #121315;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8d9197;
+  }
+}
+
+/* --- Utility Classes --- */
+@layer utilities {
+
+  /* Dirt Block Texture Overlay (Minecraft-inspired) */
+  .dirt-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20zM20 0h20v20H20V0z' fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  /* Pixel Noise Texture */
+  .pixel-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* Pixel Dirt Background (alternate) */
+  .pixel-dirt-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v1H0zm2 2h1v1H2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  /* Hard Block Shadows (Pixel-lift effect) */
+  .shadow-hard-red {
+    box-shadow: 4px 4px 0px 0px #c90014;
+  }
+
+  .shadow-hard-yellow {
+    box-shadow: 4px 4px 0px 0px #f8e600;
+  }
+
+  .shadow-hard-blue {
+    box-shadow: 4px 4px 0px 0px #b1c9e6;
+  }
+
+  .shadow-hard-navy {
+    box-shadow: 4px 4px 0px 0px #001a30;
+  }
+
+  .shadow-hard-dark {
+    box-shadow: 4px 4px 0px 0px #0d0e10;
+  }
+
+  .shadow-hard-muted {
+    box-shadow: 4px 4px 0px 0px #343537;
+  }
+
+  .shadow-hard-secondary-faint {
+    box-shadow: 4px 4px 0px 0px rgba(255, 180, 171, 0.2);
+  }
+
+  /* Corner Brackets (targeting/construction feel) */
+  .corner-brackets {
+    position: relative;
+  }
+
+  .corner-brackets::before,
+  .corner-brackets::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #c90014;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .corner-brackets::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .corner-brackets::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+
+  /* Corner Brackets — Yellow variant */
+  .corner-brackets-yellow::before,
+  .corner-brackets-yellow::after {
+    border-color: #f8e600;
+  }
+
+  /* Corner Brackets — Blue variant */
+  .corner-brackets-blue {
+    position: relative;
+  }
+
+  .corner-brackets-blue::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-top: 4px solid #b1c9e6;
+    border-left: 4px solid #b1c9e6;
+    pointer-events: none;
+    z-index: 10;
+    transition: border-color 0.3s ease;
+  }
+
+  .corner-brackets-blue::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border-bottom: 4px solid #b1c9e6;
+    border-right: 4px solid #b1c9e6;
+    pointer-events: none;
+    z-index: 10;
+    transition: border-color 0.3s ease;
+  }
+
+  /* Hover: turn brackets yellow */
+  .group:hover .corner-brackets-blue::before,
+  .group:hover .corner-brackets-blue::after {
+    border-color: #d9c900;
+  }
+
+  /* Scanline CRT Overlay */
+  .scanline {
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.2));
+    background-size: 100% 4px;
+  }
+
+  /* Blueprint Dashed Line */
+  .blueprint-line {
+    background-image: repeating-linear-gradient(90deg,
+        #43474d,
+        #43474d 4px,
+        transparent 4px,
+        transparent 8px);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+
+  /* Progress Block Segments */
+  .progress-block {
+    width: calc(10% - 2px);
+    margin-right: 2px;
+    background-color: #343537;
+  }
+
+  .progress-block.filled {
+    background-color: #b1c9e6;
+  }
+
+  .progress-block.danger {
+    background-color: #c90014;
+  }
+
+  /* Card hover lift effect */
+  .card-hover-lift {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover-lift:hover {
+    box-shadow: 6px 6px 0px 0px rgba(255, 180, 171, 0.5);
+    transform: translate(-2px, -2px);
+  }
+
+  /* Image Placeholder */
+  .img-placeholder {
+    @apply bg-surface-container-high border border-outline-variant flex items-center justify-center;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h4v4H0zM8 8h4v4H8zM16 16h4v4h-4zM24 24h4v4h-4zM32 32h4v4h-4z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+  }
+}
+
+/* --- Material Symbols Sizing --- */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
