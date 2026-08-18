@@ -4,14 +4,14 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center py-8 px-margin-mobile md:px-margin-desktop gap-gutter max-w-layout mx-auto">
         {/* Copyright */}
         <div className="font-label-pixel text-label-pixel text-tertiary">
-          © 2024 DEV_ENGINE_V1. BUILT ON FEDORA.
+          © 2026 DEV_ENGINE_V1. BUILT ON FEDORA.
         </div>
 
         {/* Social Links */}
         <div className="flex items-center gap-6">
           <a
             className="font-label-pixel text-label-pixel text-on-surface-variant hover:text-secondary transition-colors hover:scale-105 transform flex items-center gap-1"
-            href="#"
+            href="https://github.com/kiran-katakam"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -20,7 +20,7 @@ export default function Footer() {
           </a>
           <a
             className="font-label-pixel text-label-pixel text-on-surface-variant hover:text-secondary transition-colors hover:scale-105 transform flex items-center gap-1"
-            href="#"
+            href="https://www.linkedin.com/in/kirankatakam"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -29,12 +29,12 @@ export default function Footer() {
           </a>
           <a
             className="font-label-pixel text-label-pixel text-on-surface-variant hover:text-secondary transition-colors hover:scale-105 transform flex items-center gap-1"
-            href="#"
+            href="https://www.instagram.com/kiran__katakam/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="material-symbols-outlined text-sm">chat</span>
-            Twitter
+            <span className="material-symbols-outlined text-sm">photo_camera</span>
+            Instagram
           </a>
         </div>
       </div>
