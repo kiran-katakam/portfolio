@@ -1,6 +1,13 @@
+import { Helmet } from "react-helmet-async";
+
 export default function About() {
   return (
     <div className="w-full">
+      <Helmet>
+        <title>About — Kiran Katakam</title>
+        <meta name="description" content="About Kiran Katakam — Computer Science student at VIT-AP. Backend architecture, music production, Minecraft systems, and Formula 1 enthusiast." />
+      </Helmet>
+
       {/* ── Page Content Container ── */}
       <div className="max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-16">
 
@@ -51,10 +58,10 @@ export default function About() {
                 </h3>
                 <ul className="flex flex-col gap-3">
                   {[
-                    { icon: "hub", label: "Backend Architecture", desc: "Building scalable, fault-tolerant systems" },
-                    { icon: "music_note", label: "Music Production", desc: "FL Studio, sound design & mixing" },
-                    { icon: "sports_esports", label: "Minecraft Systems", desc: "Redstone engineering & server mods" },
-                    { icon: "speed", label: "Formula 1", desc: "Data-driven race strategy & telemetry" },
+                    { icon: "hub", label: "Backend Architecture", desc: "Learning Backend Systems while building" },
+                    { icon: "music_note", label: "Music", desc: "Might be listening to Arctic Monkeys" },
+                    { icon: "sports_esports", label: "Minecraft", desc: "Building worlds & Exploring with elytra" },
+                    { icon: "speed", label: "Formula 1", desc: "Obsessing over Max Verstappen" },
                   ].map((item) => (
                     <li key={item.label} className="flex items-start gap-3 p-3 bg-surface border border-outline-variant/50 rounded group hover:border-tertiary/50 transition-colors">
                       <span className="material-symbols-outlined text-primary group-hover:text-tertiary transition-colors mt-0.5">{item.icon}</span>
@@ -79,13 +86,13 @@ export default function About() {
             </div>
             <div className="flex flex-col gap-3 font-code text-code">
               {[
-                { key: "OS", value: "Fedora 41", color: "text-primary" },
-                { key: "Shell", value: "ZSH + Oh-My-Zsh", color: "text-tertiary" },
-                { key: "DE", value: "Hyprland (WM)", color: "text-on-surface" },
-                { key: "Editor", value: "VS Code + Vim", color: "text-secondary" },
-                { key: "Terminal", value: "Kitty", color: "text-primary" },
-                { key: "Browser", value: "Firefox / Brave", color: "text-on-surface" },
-                { key: "DAW", value: "FL Studio 24", color: "text-tertiary" },
+                { key: "OS", value: "Fedora Linux 44", color: "text-primary" },
+                { key: "Host", value: "VivoBook S15", color: "text-tertiary" },
+                { key: "Processor", value: "i5 - 12500H", color: "text-on-surface" },
+                { key: "DE", value: "KDE Plasma", color: "text-secondary" },
+                { key: "Terminal", value: "Konsole", color: "text-primary" },
+                { key: "Editor", value: "VS Code", color: "text-tertiary" },
+                { key: "Browser", value: "Chrome", color: "text-on-surface" },
               ].map((row) => (
                 <div key={row.key} className="flex justify-between items-center py-1 border-b border-outline-variant/30 last:border-b-0">
                   <span className="text-on-surface-variant">{row.key}</span>
@@ -97,7 +104,7 @@ export default function About() {
             <div className="mt-6 pt-4 border-t border-outline-variant">
               <div className="flex justify-between mb-1">
                 <span className="font-label-pixel text-[10px] text-on-surface-variant">SYS.UPTIME</span>
-                <span className="font-label-pixel text-[10px] text-tertiary">4+ YRS</span>
+                <span className="font-label-pixel text-[10px] text-tertiary">3+ YRS</span>
               </div>
               <div className="h-1 w-full bg-surface-container-highest rounded overflow-hidden">
                 <div className="h-full w-4/5 bg-gradient-to-r from-primary to-tertiary rounded"></div>
@@ -125,7 +132,7 @@ export default function About() {
 
               {[
                 {
-                  year: "2022 – Present",
+                  year: "2023 - Present",
                   title: "B.Tech Computer Science",
                   org: "VIT-AP University",
                   detail: "Focus: Backend Engineering, Data Structures, ML",
@@ -133,7 +140,7 @@ export default function About() {
                   statusColor: "text-tertiary",
                 },
                 {
-                  year: "2020 – 2022",
+                  year: "2021 - 2023",
                   title: "Intermediate (MPC)",
                   org: "Sri Chaitanya Junior College",
                   detail: "Mathematics, Physics, Chemistry",
@@ -141,9 +148,9 @@ export default function About() {
                   statusColor: "text-primary",
                 },
                 {
-                  year: "2020",
+                  year: "2021",
                   title: "SSC (10th Grade)",
-                  org: "Bhashyam Public School",
+                  org: "ZPP Boys High School",
                   detail: "Foundation studies",
                   status: "COMPLETED",
                   statusColor: "text-primary",
@@ -178,18 +185,18 @@ export default function About() {
               <div className="bg-surface border border-outline-variant p-5 rounded group hover:border-secondary-container/50 transition-colors">
                 <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h3 className="font-headline-md text-base text-on-surface font-semibold">Backend Developer Intern</h3>
-                    <p className="font-code text-code text-primary text-xs mt-0.5">@ Remote Startup</p>
+                    <h3 className="font-headline-md text-base text-on-surface font-semibold">Full Stack Developer Intern</h3>
+                    <p className="font-code text-code text-primary text-xs mt-0.5">@AquarLabs</p>
                   </div>
                   <span className="font-label-pixel text-[10px] text-tertiary px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">
-                    2024
+                    Sep. 2025 - Nov. 2025
                   </span>
                 </div>
                 <ul className="flex flex-col gap-2 mt-2">
                   {[
-                    "Built RESTful APIs serving 10K+ requests/day",
-                    "Designed database schemas for multi-tenant apps",
-                    "Implemented JWT auth and role-based access control",
+                    "Designed MongoDB schemas and authentication.",
+                    "Integrated maps for location features.",
+                    "Managed GitHub workflows and backend testing.",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 font-body-md text-sm text-on-surface-variant">
                       <span className="text-tertiary mt-0.5">&gt;&gt;</span>
@@ -199,22 +206,21 @@ export default function About() {
                 </ul>
               </div>
 
-              {/* Open Source Contributions */}
               <div className="bg-surface border border-outline-variant p-5 rounded group hover:border-primary/50 transition-colors">
                 <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h3 className="font-headline-md text-base text-on-surface font-semibold">Open Source Contributor</h3>
-                    <p className="font-code text-code text-tertiary text-xs mt-0.5">Various Projects</p>
+                    <h3 className="font-headline-md text-base text-on-surface font-semibold">Flutter Intern</h3>
+                    <p className="font-code text-code text-tertiary text-xs mt-0.5">@Appe Nexus</p>
                   </div>
                   <span className="font-label-pixel text-[10px] text-primary px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">
-                    ONGOING
+                    Feb. 2025 - Jul. 2025
                   </span>
                 </div>
                 <ul className="flex flex-col gap-2 mt-2">
                   {[
-                    "Contributed to Flutter ecosystem packages",
-                    "Bug fixes and feature PRs on GitHub",
-                    "Active in developer communities",
+                    "Developed cross-platform apps using Flutter.",
+                    "Built responsive, user-friendly interface components.",
+                    "Collaborated, tested, debugged, and maintained features.",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 font-body-md text-sm text-on-surface-variant">
                       <span className="text-primary mt-0.5">&gt;&gt;</span>
@@ -250,17 +256,17 @@ export default function About() {
               {
                 category: "Frameworks",
                 color: "border-l-secondary-container",
-                items: ["Node.js", "Express", "Flutter", "React", "Flask"],
+                items: ["Node.js", "Express", "Flutter", "Flask"],
               },
               {
                 category: "Databases",
                 color: "border-l-tertiary",
-                items: ["Neo4j", "MongoDB", "SQLite", "PostgreSQL", "Hive"],
+                items: ["Neo4j", "MongoDB", "SQLite", "Hive"],
               },
               {
                 category: "Tools & DevOps",
                 color: "border-l-primary",
-                items: ["Git", "Docker", "Linux (Fedora)", "VS Code", "Postman"],
+                items: ["Git", "Docker", "Linux (Fedora)", "VS Code", "Insomnia"],
               },
             ].map((group) => (
               <div key={group.category} className={`bg-surface border border-outline-variant/50 p-4 rounded border-l-4 ${group.color}`}>
@@ -298,22 +304,16 @@ export default function About() {
             <div className="flex flex-col gap-4">
               {[
                 {
-                  role: "Technical Lead",
-                  org: "Google Developer Student Club",
-                  desc: "Led workshops on web development and cloud technologies",
-                  icon: "cloud",
+                  role: "Secretary",
+                  org: "Kalki Personality Development Club",
+                  desc: "Coordinated cross-functional teams and delivered 4+ club events.",
+                  icon: "group",
                 },
                 {
-                  role: "Core Member",
-                  org: "CodeChef VIT-AP Chapter",
+                  role: "Competetive Programming Member",
+                  org: "GDG On Campus VIT-AP",
                   desc: "Organized competitive programming contests and coding bootcamps",
                   icon: "emoji_events",
-                },
-                {
-                  role: "Event Coordinator",
-                  org: "IEEE Student Branch",
-                  desc: "Planned and executed tech symposiums and hackathons",
-                  icon: "calendar_month",
                 },
               ].map((item) => (
                 <div key={item.role} className="flex items-start gap-3 p-3 bg-surface-container-low border border-outline-variant/50 rounded">
@@ -343,10 +343,10 @@ export default function About() {
               {[
                 { label: "Distributed Systems", color: "bg-primary-container border-primary text-primary" },
                 { label: "Kubernetes", color: "bg-surface border-outline-variant text-on-surface" },
-                { label: "System Design", color: "bg-surface border-tertiary/30 text-tertiary" },
-                { label: "gRPC & Protobuf", color: "bg-surface border-outline-variant text-on-surface" },
-                { label: "Rust", color: "bg-surface border-secondary-container/30 text-secondary" },
-                { label: "Event Sourcing", color: "bg-surface border-outline-variant text-on-surface" },
+                { label: "Fedora", color: "bg-surface border-tertiary/30 text-tertiary" },
+                { label: "DevOps", color: "bg-surface border-outline-variant text-on-surface" },
+                { label: "DSA", color: "bg-surface border-secondary-container/30 text-secondary" },
+                { label: "Databases", color: "bg-surface border-outline-variant text-on-surface" },
                 { label: "CI/CD Pipelines", color: "bg-primary-container border-primary text-primary" },
                 { label: "Cloud Architecture", color: "bg-surface border-tertiary/30 text-tertiary" },
               ].map((tag) => (

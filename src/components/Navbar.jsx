@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -10,6 +10,31 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navRef = useRef(null);
+  const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0, opacity: 0 });
+
+  useEffect(() => {
+    if (!navRef.current) return;
+    const activeLink = navRef.current.querySelector("[data-active='true']");
+    if (activeLink) {
+      const navRect = navRef.current.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      setSliderStyle({
+        width: linkRect.width,
+        left: linkRect.left - navRect.left,
+        opacity: 1,
+      });
+    } else {
+      setSliderStyle((prev) => ({ ...prev, opacity: 0 }));
+    }
+  }, [location.pathname]);
+
+  /* Determine if a path is active — exact for "/", startsWith for others */
+  const isPathActive = (to) => {
+    if (to === "/") return location.pathname === "/";
+    return location.pathname.startsWith(to);
+  };
 
   return (
     <nav className="sticky top-0 w-full z-50 bg-secondary-container border-b-2 border-outline-variant shadow-hard-navy">
@@ -24,22 +49,33 @@ export default function Navbar() {
         </NavLink>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `font-label-pixel text-label-pixel uppercase tracking-widest transition-all px-2 py-1 ${
-                  isActive
-                    ? "text-white border-b-2 border-white pb-1 font-bold"
-                    : "text-white/80 hover:text-tertiary hover:bg-white/10"
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+        <div ref={navRef} className="hidden md:flex items-center gap-8 relative">
+          {navLinks.map((link) => {
+            const active = isPathActive(link.to);
+            return (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                data-active={active}
+                className={`font-label-pixel text-label-pixel uppercase tracking-widest transition-colors duration-200 px-2 py-1 ${
+                  active
+                    ? "text-white font-bold"
+                    : "text-white/80 hover:text-tertiary"
+                }`}
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
+          {/* Animated sliding underline */}
+          <span
+            className="absolute bottom-[-2px] h-[2px] bg-white transition-all duration-300 ease-in-out pointer-events-none"
+            style={{
+              width: `${sliderStyle.width}px`,
+              left: `${sliderStyle.left}px`,
+              opacity: sliderStyle.opacity,
+            }}
+          />
         </div>
 
         {/* Action Icons */}

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const projects = [
@@ -267,14 +268,18 @@ function ProjectCard({ project }) {
 export default function Projects() {
   return (
     <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-12">
+      <Helmet>
+        <title>Projects — Kiran Katakam</title>
+        <meta name="description" content="A curated archive of engineering projects spanning backend systems, mobile applications, data pipelines, and developer tools." />
+      </Helmet>
       {/* ── Section Header ── */}
       <header className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant w-fit rounded">
-          <span className="material-symbols-outlined text-secondary-container text-sm">
+          <span className="material-symbols-outlined text-tertiary text-sm">
             folder_special
           </span>
-          <span className="font-label-pixel text-label-pixel text-secondary-container tracking-widest">
-            SYSTEM_PROJECTS_
+          <span className="font-label-pixel text-label-pixel text-tertiary tracking-widest">
+            SYSTEM_PROJECTS
           </span>
         </div>
         <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase">

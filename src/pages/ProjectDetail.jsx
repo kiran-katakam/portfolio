@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { projectsData } from "../data/projects";
 
 /* ═══════════════════════════════════════════
@@ -343,6 +344,10 @@ export default function ProjectDetail() {
 
   return (
     <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-12">
+      <Helmet>
+        <title>{project.heroTitle} — Kiran Katakam</title>
+        <meta name="description" content={project.description} />
+      </Helmet>
 
       {/* ── Back Link ── */}
       <Link

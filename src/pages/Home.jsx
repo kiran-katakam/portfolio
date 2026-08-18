@@ -1,20 +1,26 @@
+import { Helmet } from "react-helmet-async";
+
 export default function Home() {
   return (
     <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+      <Helmet>
+        <title>Kiran Katakam — Developer Cockpit</title>
+        <meta name="description" content="Dhanumjay Kiran Katakam — Backend-focused developer obsessed with system architecture, low-latency execution, and building infrastructure that scales." />
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
         {/* ── Left Column: Identity & Intro (Span 8) ── */}
         <div className="col-span-1 md:col-span-8 flex flex-col gap-12">
           <header className="flex flex-col gap-4">
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant w-fit rounded">
-              <span className="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+              <span className="material-symbols-outlined text-tertiary text-sm">sensors</span>
               <span className="font-label-pixel text-label-pixel text-tertiary tracking-widest">
                 SYSTEM_ONLINE
               </span>
             </div>
 
             {/* Name */}
-            <h1 className="font-display-lg text-display-lg text-on-background m-0 p-0 leading-none">
+            <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase">
               Dhanumjay
               <br />
               <span className="text-primary opacity-90">Kiran Katakam</span>
