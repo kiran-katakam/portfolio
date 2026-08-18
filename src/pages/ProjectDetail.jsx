@@ -141,7 +141,22 @@ function FindingSection({ content, title, icon, iconColor }) {
         </div>
       )}
       <div className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed flex-grow flex items-center">
-        <p>{content.text}</p>
+        <p>
+          {content.highlightParts
+            ? content.highlightParts.map((part, i) =>
+                part.type === "highlight" ? (
+                  <span
+                    key={i}
+                    className={`${part.color} bg-surface-container-highest px-2 py-0.5 mx-1 rounded border border-outline-variant`}
+                  >
+                    {part.text}
+                  </span>
+                ) : (
+                  <span key={i}>{part.text}</span>
+                )
+              )
+            : content.text}
+        </p>
       </div>
     </div>
   );
@@ -367,7 +382,18 @@ export default function ProjectDetail() {
 
         {/* Title */}
         <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background leading-tight">
-          {project.heroTitle}
+          {project.heroTitleHighlight
+            ? <>
+                {project.heroTitle.replace(project.heroTitleHighlight, "")}
+                <span className="text-tertiary-fixed">{project.heroTitleHighlight}</span>
+              </>
+            : project.heroTitle}
+          {project.heroSubTitle && (
+            <>
+              <br />
+              <span className="text-surface-variant">{project.heroSubTitle}</span>
+            </>
+          )}
         </h1>
 
         {/* Subtitle + Description */}
