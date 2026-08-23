@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-16">
       <Helmet>
-        <title>Contact — Kiran Katakam</title>
+        <title>Contact | Kiran</title>
         <meta name="description" content="Get in touch with Kiran Katakam. Available for backend engineering roles, collaboration opportunities, and technical conversations." />
       </Helmet>
       {/* ── Page Header ── */}

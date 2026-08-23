@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="w-full">
       <Helmet>
-        <title>About — Kiran Katakam</title>
+        <title>About | Kiran</title>
         <meta name="description" content="About Kiran Katakam — Computer Science student at VIT-AP. Backend architecture, music production, Minecraft systems, and Formula 1 enthusiast." />
       </Helmet>
 
@@ -92,7 +92,7 @@ export default function About() {
                 { key: "DE", value: "KDE Plasma", color: "text-secondary" },
                 { key: "Terminal", value: "Konsole", color: "text-primary" },
                 { key: "Editor", value: "VS Code", color: "text-tertiary" },
-                { key: "Browser", value: "Chrome", color: "text-on-surface" },
+                { key: "Browser", value: "Chrome (LOL)", color: "text-on-surface" },
               ].map((row) => (
                 <div key={row.key} className="flex justify-between items-center py-1 border-b border-outline-variant/30 last:border-b-0">
                   <span className="text-on-surface-variant">{row.key}</span>

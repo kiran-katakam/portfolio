@@ -269,7 +269,7 @@ export default function Projects() {
   return (
     <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-12">
       <Helmet>
-        <title>Projects — Kiran Katakam</title>
+        <title>Projects | Kiran</title>
         <meta name="description" content="A curated archive of engineering projects spanning backend systems, mobile applications, data pipelines, and developer tools." />
       </Helmet>
       {/* ── Section Header ── */}

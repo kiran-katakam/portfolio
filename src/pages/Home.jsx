@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
       <Helmet>
-        <title>Kiran Katakam — Developer Cockpit</title>
+        <title>Home | Kiran</title>
         <meta name="description" content="Dhanumjay Kiran Katakam — Backend-focused developer obsessed with system architecture, low-latency execution, and building infrastructure that scales." />
       </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
@@ -21,16 +21,14 @@ export default function Home() {
 
             {/* Name */}
             <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase">
-              Dhanumjay
+              Dhanumjay Kiran
               <br />
-              <span className="text-primary opacity-90">Kiran Katakam</span>
+              <span className="text-primary opacity-90">Katakam</span>
             </h1>
 
             {/* Tagline */}
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4 border-l-2 border-secondary-container pl-4">
-              Engineering high-performance infrastructure at the intersection of
-              rigid system design and modular logic. Obsessed with low-latency
-              execution and architectural precision.
+              Somewhere between curiosity, code, and too many side projects.
             </p>
           </header>
         </div>
