@@ -30,11 +30,20 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Debug GitHub context
+        run: |
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Ref: $GITHUB_REF"
+          echo "Event: $GITHUB_EVENT_NAME"
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ap-south-1
+
+      - name: Test AWS identity
+        run: aws sts get-caller-identity
 
       - name: Deploy to S3
         run: |
