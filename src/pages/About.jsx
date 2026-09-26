@@ -365,11 +365,13 @@ export default function About() {
             SECTION 6: Passion — F1 (Full Bleed)
         ════════════════════════════════════════════ */}
         <section className="relative overflow-hidden border border-outline-variant rounded">
-          {/* Background placeholder */}
-          <div className="img-placeholder min-h-[300px] md:min-h-[400px]">
-            <span className="font-label-pixel text-label-pixel text-outline z-10">
-              [ F1 HERO IMAGE ]
-            </span>
+          {/* Hero image */}
+          <div className="relative min-h-[300px] md:min-h-[400px]">
+            <img
+              src="/max.jpg"
+              alt="Max Verstappen driving a Formula 1 car"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
@@ -397,11 +399,13 @@ export default function About() {
             SECTION 7: Passion — Minecraft (Full Bleed)
         ════════════════════════════════════════════ */}
         <section className="relative overflow-hidden border border-outline-variant rounded">
-          {/* Background placeholder */}
-          <div className="img-placeholder min-h-[300px] md:min-h-[400px]">
-            <span className="font-label-pixel text-label-pixel text-outline z-10">
-              [ MINECRAFT LANDSCAPE IMAGE ]
-            </span>
+          {/* Hero image */}
+          <div className="relative min-h-[300px] md:min-h-[400px]">
+            <img
+              src="/mc.jpg"
+              alt="Minecraft landscape"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
