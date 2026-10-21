@@ -14,7 +14,7 @@ export const projects = [
     summary:
       "Universities issue certificates as hashes on a smart contract. Anyone can check one by scanning its QR code. The contract stores only the hash, the issuing wallet and a timestamp, and only the original issuer can revoke.",
     links: {
-      live: "https://verify-on-chain-frontend.vercel.app",
+      live: "https://verifyonchain.kirankatakam.me",
       repos: [
         { label: "Contracts", url: `${GH}/verify_on_chain_contracts` },
         { label: "Backend", url: `${GH}/verify_on_chain_backend` },
@@ -72,10 +72,11 @@ export const projects = [
     title: "Cinegraph",
     tagline: "Movie recommendations by walking a graph",
     year: 2026,
-    status: "source",
+    status: "live",
     summary:
       "Like a few movies and Cinegraph walks a Neo4j graph for others that share genres, actors or direct similarity edges, then ranks them with a weighted score.",
     links: {
+      live: "https://cinegraph.kirankatakam.me",
       repos: [
         { label: "Backend", url: `${GH}/cinegraph-backend` },
         { label: "Frontend", url: `${GH}/cinegraph-frontend` },
@@ -132,10 +133,11 @@ LIMIT 24`,
     title: "CDC Cracker",
     tagline: "Course and assessment prep for VIT-AP",
     year: 2026,
-    status: "source",
+    status: "live",
     summary:
       "Organizes courses, assessments, multiple-choice and coding questions in one place, with an admin panel for managing the content and an in-browser code editor.",
     links: {
+      live: "https://cdcracker.kirankatakam.me",
       repos: [
         { label: "Backend", url: `${GH}/cdcracker_backend` },
         { label: "Frontend", url: `${GH}/cdcracker_frontend` },
@@ -184,10 +186,11 @@ LIMIT 24`,
     title: "Water Scarcity EWS",
     tagline: "Agricultural water-stress map of Andhra Pradesh",
     year: 2026,
-    status: "source",
+    status: "live",
     summary:
       "An interactive map of 13 Andhra Pradesh districts built from 2000–2014 data. Each district opens into its own risk breakdown and trend chart. Built as a data warehousing and mining course project.",
     links: {
+      live: "https://waterscarcityews.kirankatakam.me",
       repos: [{ label: "Source", url: `${GH}/early_warning_system_for_agriculture_scarcity` }],
     },
     stack: ["React", "D3.js", "TopoJSON", "GeoJSON", "K-Means"],
