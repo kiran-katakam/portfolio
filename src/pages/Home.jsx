@@ -13,7 +13,7 @@ const rows = [
 
 const readout = [
   ["Base", "VIT-AP University"],
-  ["Discipline", "Backend"],
+  ["Certified", "AWS CLF-C02"],
   ["On the grid", `${projects.length} projects`],
   ["Live now", projects.filter((p) => p.status === "live").map((p) => p.title).join(", ")],
 ];

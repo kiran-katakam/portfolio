@@ -1,4 +1,6 @@
-import { profile, career, education, leadership, garage, rig, offTrack, nextSeason } from "../data/profile";
+import CopyButton from "../components/CopyButton";
+import Icon from "../components/Icon";
+import { certifications, profile, career, education, leadership, garage, rig, offTrack, nextSeason } from "../data/profile";
 
 function Heading({ children }) {
   return <h2 className="display text-[clamp(48px,7vw,104px)]">{children}</h2>;
@@ -70,6 +72,37 @@ export default function About() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section className="snap-start wrap mt-28 lg:mt-36">
+        <Heading>Certified</Heading>
+        <ul className="mt-10 border-t border-rule">
+          {certifications.map((c) => (
+            <li key={c.validation} className="py-8 border-b border-rule grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="bg-chalk text-void font-black italic [font-stretch:62%] text-[24px] leading-none px-3 py-1.5">{c.code}</span>
+                  <span className="label">{c.issuer}</span>
+                </div>
+                <h3 className="mt-4 font-black italic [font-stretch:62%] uppercase text-[clamp(32px,4vw,56px)] leading-[0.9]">{c.name}</h3>
+                <p className="mt-3 text-dim">Issued {c.issued} · Valid until {c.expires}</p>
+              </div>
+              <div className="min-w-0">
+                <p className="label">Validation number</p>
+                <p className="mt-2 font-mono text-[15px] break-all bg-bar border border-rule px-4 py-3">{c.validation}</p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <CopyButton text={c.validation} label="Copy number" />
+                  <a href={c.badgeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-chalk text-void px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:bg-green transition-colors">
+                    Verify on Credly <Icon name="out" />
+                  </a>
+                  <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-rule px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:border-chalk transition-colors">
+                    Verify at AWS <Icon name="out" />
+                  </a>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="snap-start wrap mt-28 lg:mt-36 grid gap-16 lg:grid-cols-2">

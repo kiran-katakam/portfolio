@@ -1,5 +1,5 @@
-import { useState } from "react";
 import Icon from "../components/Icon";
+import CopyButton from "../components/CopyButton";
 import { profile, socials } from "../data/profile";
 
 // Fixed bar heights so the waveform reads like a voice clip, not noise.
@@ -8,17 +8,6 @@ const bars = Array.from({ length: 64 }, (_, i) => 0.25 + 0.75 * Math.abs(Math.si
 const btn = "inline-flex items-center gap-2 px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] transition-colors";
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      window.location.href = `mailto:${profile.email}`;
-    }
-  };
 
   return (
     <>
@@ -57,9 +46,7 @@ export default function Contact() {
               <a href={`mailto:${profile.email}`} className={`${btn} bg-chalk text-void hover:bg-green`}>
                 Write email <Icon name="out" />
               </a>
-              <button type="button" onClick={copy} className={`${btn} border border-rule hover:border-chalk`}>
-                <Icon name={copied ? "check" : "copy"} /> <span aria-live="polite">{copied ? "Copied" : "Copy address"}</span>
-              </button>
+              <CopyButton text={profile.email} label="Copy address" />
             </div>
           </div>
         </div>

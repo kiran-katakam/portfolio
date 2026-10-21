@@ -16,6 +16,19 @@ export const socials = [
   { label: "Instagram", handle: "kiran__katakam", url: "https://www.instagram.com/kiran__katakam/" },
 ];
 
+export const certifications = [
+  {
+    name: "AWS Certified Cloud Practitioner",
+    code: "CLF-C02",
+    issuer: "Amazon Web Services",
+    issued: "Oct 14, 2026",
+    expires: "Oct 14, 2029",
+    validation: "f70a5b83f71242e69b2418fa17eca964",
+    verifyUrl: "https://aws.amazon.com/verification",
+    badgeUrl: "https://www.credly.com/badges/354de2c2-f940-40b4-b96c-dcba734333f1/public_url",
+  },
+];
+
 export const career = [
   {
     when: "Sep 2025 – Nov 2025",

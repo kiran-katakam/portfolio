@@ -25,8 +25,6 @@
   html {
     background: #08080a;
     scroll-behavior: smooth;
-    /* Proximity, not mandatory: long sections still scroll freely, snapping only near a section start. */
-    scroll-snap-type: y proximity;
     scroll-padding-top: 56px;
     scrollbar-color: #2a2a31 #08080a;
     scrollbar-width: thin;
@@ -67,6 +65,14 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #9c9ca6;
+  }
+}
+
+/* Snap only with a mouse or trackpad: on touch screens it fights momentum scrolling.
+   Proximity, not mandatory, so long sections still scroll freely. */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scroll-snap-type: y proximity;
   }
 }
 
