@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "archivo",
+        "createdAt": "2026-10-21T11:42:55.932Z",
+        "reason": "Redesign to Timing Tower direction (chosen by user 2026-10-21); DESIGN.md is replaced at finish"
+      }
+    ]
+  }
+}

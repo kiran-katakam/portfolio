@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Layout from "./components/Layout";
@@ -10,28 +10,18 @@ const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-function PageLoader() {
-  return (
-    <div className="flex items-center justify-center min-h-[60vh]">
-      <span className="font-label-pixel text-label-pixel text-tertiary animate-pulse tracking-widest">
-        LOADING_MODULE...
-      </span>
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
-          <Route path="/about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
-          <Route path="/projects" element={<Suspense fallback={<PageLoader />}><Projects /></Suspense>} />
-          <Route path="/projects/:slug" element={<Suspense fallback={<PageLoader />}><ProjectDetail /></Suspense>} />
-          <Route path="/contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
-          <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T00:00:00Z",
+  "title": "Design System: Timing Tower",
+  "extensions": {
+    "colorMeta": {
+      "void": {
+        "role": "neutral",
+        "displayName": "Broadcast Void",
+        "canonical": "#08080a",
+        "tonalRamp": [
+          "oklch(15% 0.006 285)",
+          "oklch(25% 0.006 285)",
+          "oklch(35% 0.006 285)",
+          "oklch(48% 0.006 285)",
+          "oklch(60% 0.006 285)",
+          "oklch(72% 0.006 285)",
+          "oklch(84% 0.006 285)",
+          "oklch(95% 0.006 285)"
+        ]
+      },
+      "bar": {
+        "role": "neutral",
+        "displayName": "Bar",
+        "canonical": "#131317",
+        "tonalRamp": [
+          "oklch(15% 0.008 285)",
+          "oklch(25% 0.008 285)",
+          "oklch(35% 0.008 285)",
+          "oklch(48% 0.008 285)",
+          "oklch(60% 0.008 285)",
+          "oklch(72% 0.008 285)",
+          "oklch(84% 0.008 285)",
+          "oklch(95% 0.008 285)"
+        ]
+      },
+      "bar-hi": {
+        "role": "neutral",
+        "displayName": "Bar High",
+        "canonical": "#1c1c22",
+        "tonalRamp": [
+          "oklch(15% 0.012 285)",
+          "oklch(25% 0.012 285)",
+          "oklch(35% 0.012 285)",
+          "oklch(48% 0.012 285)",
+          "oklch(60% 0.012 285)",
+          "oklch(72% 0.012 285)",
+          "oklch(84% 0.012 285)",
+          "oklch(95% 0.012 285)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "#2a2a31",
+        "tonalRamp": [
+          "oklch(15% 0.014 285)",
+          "oklch(25% 0.014 285)",
+          "oklch(35% 0.014 285)",
+          "oklch(48% 0.014 285)",
+          "oklch(60% 0.014 285)",
+          "oklch(72% 0.014 285)",
+          "oklch(84% 0.014 285)",
+          "oklch(95% 0.014 285)"
+        ]
+      },
+      "chalk": {
+        "role": "primary",
+        "displayName": "Chalk White",
+        "canonical": "#f3f3ef",
+        "tonalRamp": [
+          "oklch(15% 0.006 110)",
+          "oklch(25% 0.006 110)",
+          "oklch(35% 0.006 110)",
+          "oklch(48% 0.006 110)",
+          "oklch(60% 0.006 110)",
+          "oklch(72% 0.006 110)",
+          "oklch(84% 0.006 110)",
+          "oklch(95% 0.006 110)"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Dim",
+        "canonical": "#9c9ca6",
+        "tonalRamp": [
+          "oklch(15% 0.014 285)",
+          "oklch(25% 0.014 285)",
+          "oklch(35% 0.014 285)",
+          "oklch(48% 0.014 285)",
+          "oklch(60% 0.014 285)",
+          "oklch(72% 0.014 285)",
+          "oklch(84% 0.014 285)",
+          "oklch(95% 0.014 285)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Live Green",
+        "canonical": "#3ddc79",
+        "tonalRamp": [
+          "oklch(15% 0.17 152)",
+          "oklch(25% 0.17 152)",
+          "oklch(35% 0.17 152)",
+          "oklch(48% 0.17 152)",
+          "oklch(60% 0.17 152)",
+          "oklch(72% 0.17 152)",
+          "oklch(84% 0.17 152)",
+          "oklch(95% 0.17 152)"
+        ]
+      },
+      "purple": {
+        "role": "secondary",
+        "displayName": "Source Purple",
+        "canonical": "#b07cff",
+        "tonalRamp": [
+          "oklch(15% 0.17 300)",
+          "oklch(25% 0.17 300)",
+          "oklch(35% 0.17 300)",
+          "oklch(48% 0.17 300)",
+          "oklch(60% 0.17 300)",
+          "oklch(72% 0.17 300)",
+          "oklch(84% 0.17 300)",
+          "oklch(95% 0.17 300)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "In-Dev Yellow",
+        "canonical": "#ffd23f",
+        "tonalRamp": [
+          "oklch(15% 0.16 92)",
+          "oklch(25% 0.16 92)",
+          "oklch(35% 0.16 92)",
+          "oklch(48% 0.16 92)",
+          "oklch(60% 0.16 92)",
+          "oklch(72% 0.16 92)",
+          "oklch(84% 0.16 92)",
+          "oklch(95% 0.16 92)"
+        ]
+      },
+      "lights": {
+        "role": "tertiary",
+        "displayName": "Start-Light Red",
+        "canonical": "#ff1e10",
+        "tonalRamp": [
+          "oklch(15% 0.22 31)",
+          "oklch(25% 0.22 31)",
+          "oklch(35% 0.22 31)",
+          "oklch(48% 0.22 31)",
+          "oklch(60% 0.22 31)",
+          "oklch(72% 0.22 31)",
+          "oklch(84% 0.22 31)",
+          "oklch(95% 0.22 31)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page h1s and the start-light name card; Archivo 900 italic, font-stretch 62%, uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2s, lead project title, ruled-list entries; same voice as display, smaller clamp."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Onboard and career headings; 800 at 80% width, uppercase."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text; tabular numerals sitewide; intros 17-19px, 52-64ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Table heads, dt keys, figcaptions, footer links; dim, uppercase, 85% width."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "JetBrains Mono for code excerpts and the rig spec only."
+      }
+    },
+    "fonts": [
+      {
+        "family": "Archivo",
+        "source": "self-hosted /fonts/archivo.woff2 and /fonts/archivo-italic.woff2 (OFL, latin subset), preloaded",
+        "axes": {
+          "wght": "400 900",
+          "wdth": "62 125"
+        },
+        "styles": [
+          "normal",
+          "italic"
+        ],
+        "display": "swap"
+      },
+      {
+        "family": "JetBrains Mono",
+        "source": "Google Fonts css2, weights 400 and 700",
+        "use": "code and rig spec only"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "start-lamp-glow",
+        "value": "0 0 28px 4px rgba(255,30,16,0.55)",
+        "purpose": "Lit start-light lamp only. No other surface carries shadow or glow."
+      }
+    ],
+    "focus": [
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #f3f3ef; outline-offset: 3px",
+        "purpose": "Global :focus-visible."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The single curve for wipe and settle."
+      },
+      {
+        "name": "start-lights",
+        "value": "5 lamps at 550ms steps after 250ms, hold 900ms, clip away upward 500ms",
+        "purpose": "Once per session (sessionStorage kk-lights-seen); skippable; skipped under reduced motion; pauses settle/tick/wipe via html[data-lights]."
+      },
+      {
+        "name": "settle",
+        "value": "700ms ease-out, 400ms delay, translateY(var(--d) * 100%) to none",
+        "purpose": "One tower pair starts swapped and overtakes into place; position column stays fixed."
+      },
+      {
+        "name": "tick",
+        "value": "1600ms ease-out, opacity 1 to 70% then 0",
+        "purpose": "Position-change chevron: green up for a gain, dim down for a loss."
+      },
+      {
+        "name": "wipe",
+        "value": "520ms ease-out, clip-path inset(0 100% 0 0) to inset(0)",
+        "purpose": "Onboard panel wipes in from the left on each active-row change."
+      },
+      {
+        "name": "wave",
+        "value": "700ms ease-in-out infinite, scaleY 0.35 at 50%",
+        "purpose": "Team-radio waveform pulse while the radio panel is hovered or focused."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "wipe, settle and wave set to none; tick hidden; start lights not run."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "layout-max",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Chalk fill, void text; fills green on hover. Main action per section.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Try it live <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-primary{font-family:Archivo,system-ui,sans-serif;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;font-weight:700;font-stretch:80%;letter-spacing:.06em;text-transform:uppercase;border-radius:0;transition:background-color .15s,border-color .15s,color .15s;background:#f3f3ef;color:#08080a;text-decoration:none;border:0} .ds-btn-primary:hover{background:#3ddc79} .ds-btn-primary:focus-visible{outline:2px solid #f3f3ef;outline-offset:3px;}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "1px rule border on void; border turns chalk on hover. Secondary action.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">How it works <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-ghost{font-family:Archivo,system-ui,sans-serif;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;font-weight:700;font-stretch:80%;letter-spacing:.06em;text-transform:uppercase;border-radius:0;transition:background-color .15s,border-color .15s,color .15s;background:#08080a;color:#f3f3ef;text-decoration:none;border:1px solid #2a2a31} .ds-btn-ghost:hover{border-color:#f3f3ef} .ds-btn-ghost:focus-visible{outline:2px solid #f3f3ef;outline-offset:3px;}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "56px sticky strip: KK block, dim condensed tabs, active tab inverted to chalk.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\"><span class=\"ds-nav-kk\">KK</span><span class=\"ds-nav-name\">Kiran Katakam</span></a><nav class=\"ds-nav-links\"><a href=\"#\" class=\"ds-nav-link is-active\">About</a><a href=\"#\" class=\"ds-nav-link\">Projects</a><a href=\"#\" class=\"ds-nav-link\">Contact</a></nav></header>",
+      "css": ".ds-nav{font-family:Archivo,system-ui,sans-serif;display:flex;justify-content:space-between;align-items:stretch;height:56px;padding:0 16px;background:rgba(8,8,10,.95);border-bottom:1px solid #2a2a31;color:#f3f3ef} .ds-nav-mark{display:flex;align-items:center;gap:12px;text-decoration:none} .ds-nav-kk{background:#f3f3ef;color:#08080a;font-weight:900;font-style:italic;font-stretch:62%;font-size:22px;line-height:1;padding:6px 8px} .ds-nav-name,.ds-nav-link{font-weight:700;font-stretch:80%;text-transform:uppercase;letter-spacing:.06em;font-size:15px;color:#9c9ca6;text-decoration:none;transition:color .15s,background-color .15s} .ds-nav-mark:hover .ds-nav-name{color:#f3f3ef} .ds-nav-links{display:flex;align-items:stretch} .ds-nav-link{display:flex;align-items:center;padding:0 20px} .ds-nav-link:hover{color:#f3f3ef;background:#131317} .ds-nav-link.is-active{background:#f3f3ef;color:#08080a} .ds-nav-link:focus-visible{outline:2px solid #f3f3ef;outline-offset:3px;}"
+    },
+    {
+      "name": "Timing Tower",
+      "kind": "custom",
+      "refersTo": "tower-row",
+      "description": "The site's navigation: ruled 56px rows with a fixed chalk position block, code, title, year and tyre marker.",
+      "html": "<div class=\"ds-tower\"><div class=\"ds-tower-head\"><span class=\"ds-label\">Pos · Driver / Project</span><span class=\"ds-label\">Status</span></div><a class=\"ds-row is-on\" href=\"#\"><span class=\"ds-pos\">1</span><span class=\"ds-code\">KIR</span><span class=\"ds-title\">Kiran Katakam</span><span class=\"ds-label ds-you\">You</span></a><a class=\"ds-row\" href=\"#\"><span class=\"ds-pos\">2</span><span class=\"ds-code\">VOC</span><span class=\"ds-title\">VerifyOnChain</span><span class=\"ds-year\">2026</span><span class=\"ds-tyre\" style=\"color:#3ddc79\"><span>L</span></span></a><a class=\"ds-row\" href=\"#\"><span class=\"ds-pos\">3</span><span class=\"ds-code\">CNG</span><span class=\"ds-title\">Cinegraph</span><span class=\"ds-year\">2026</span><span class=\"ds-tyre\" style=\"color:#b07cff\"><span>S</span></span></a></div>",
+      "css": ".ds-tower{font-family:Archivo,system-ui,sans-serif;width:420px;background:#131317;border:1px solid #2a2a31;color:#f3f3ef} .ds-tower-head{display:flex;justify-content:space-between;align-items:center;height:40px;padding:0 12px;border-bottom:1px solid #2a2a31} .ds-label{font-size:12px;font-weight:700;font-stretch:85%;letter-spacing:.08em;text-transform:uppercase;color:#9c9ca6;line-height:1} .ds-row{display:flex;align-items:stretch;height:56px;gap:12px;padding-right:16px;background:#131317;border-bottom:1px solid #2a2a31;color:inherit;text-decoration:none;transition:background-color .15s} .ds-row:last-child{border-bottom:0} .ds-row:hover,.ds-row.is-on{background:#1c1c22} .ds-row:focus-visible{outline:2px solid #f3f3ef;outline-offset:-2px} .ds-pos{display:grid;place-items:center;width:48px;flex-shrink:0;background:#f3f3ef;color:#08080a;font-weight:900;font-style:italic;font-stretch:62%;font-size:28px} .ds-row.is-on .ds-pos{background:#08080a;color:#f3f3ef;outline:2px solid #f3f3ef;outline-offset:-2px} .ds-code{align-self:center;margin-left:8px;font-weight:900;font-style:italic;font-stretch:62%;font-size:26px;line-height:1} .ds-title{align-self:center;flex:1;font-weight:700;font-stretch:75%;text-transform:uppercase;font-size:18px;line-height:1;letter-spacing:.02em} .ds-year{align-self:center;color:#9c9ca6;font-size:14px} .ds-you{align-self:center;color:#f3f3ef} .ds-tyre{align-self:center;display:grid;place-items:center;width:24px;height:24px;border:3px solid currentColor;border-radius:9999px;box-sizing:border-box;font-size:11px;font-weight:900;line-height:1} .ds-tyre span{color:#f3f3ef}"
+    },
+    {
+      "name": "Tyre Marker",
+      "kind": "chip",
+      "refersTo": "tyre-marker",
+      "description": "Status ring with letter: L live green, S source purple, D in development yellow.",
+      "html": "<div class=\"ds-tyres\"><span class=\"ds-tm\" style=\"color:#3ddc79\"><span class=\"ds-tm-ring\"><span>L</span></span>Live</span><span class=\"ds-tm\" style=\"color:#b07cff\"><span class=\"ds-tm-ring\"><span>S</span></span>Source</span><span class=\"ds-tm\" style=\"color:#ffd23f\"><span class=\"ds-tm-ring\"><span>D</span></span>In development</span></div>",
+      "css": ".ds-tyres{font-family:Archivo,system-ui,sans-serif;display:flex;gap:24px;background:#08080a;padding:16px} .ds-tm{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;font-stretch:85%;letter-spacing:.08em;text-transform:uppercase;line-height:1} .ds-tm-ring{display:grid;place-items:center;width:24px;height:24px;box-sizing:border-box;border:3px solid currentColor;border-radius:9999px;font-size:11px;font-weight:900} .ds-tm-ring span{color:#f3f3ef}"
+    },
+    {
+      "name": "Ruled List",
+      "kind": "card",
+      "refersTo": "",
+      "description": "The replacement for cards: headline-voice entries between 1px rules, row hover to bar.",
+      "html": "<ul class=\"ds-ruled\"><li><a href=\"#\"><span class=\"ds-ruled-h\">GitHub</span><span class=\"ds-ruled-s\">kiran-katakam</span></a></li><li><a href=\"#\"><span class=\"ds-ruled-h\">LinkedIn</span><span class=\"ds-ruled-s\">kirankatakam</span></a></li></ul>",
+      "css": ".ds-ruled{font-family:Archivo,system-ui,sans-serif;list-style:none;margin:0;padding:0;border-top:1px solid #2a2a31;background:#08080a;color:#f3f3ef} .ds-ruled li{border-bottom:1px solid #2a2a31} .ds-ruled a{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding:24px 0;color:inherit;text-decoration:none;transition:background-color .15s} .ds-ruled a:hover{background:#131317} .ds-ruled a:focus-visible{outline:2px solid #f3f3ef;outline-offset:3px;} .ds-ruled-h{font-weight:900;font-style:italic;font-stretch:62%;text-transform:uppercase;font-size:64px;line-height:.86;letter-spacing:-.01em} .ds-ruled-s{color:#9c9ca6;font-size:17px}"
+    },
+    {
+      "name": "Onboard Code Panel",
+      "kind": "card",
+      "refersTo": "",
+      "description": "Bar panel with 40px ruled label header and JetBrains Mono 13px code.",
+      "html": "<figure class=\"ds-code\"><figcaption><span class=\"ds-cl\">Onboard · verify.go</span><a class=\"ds-cl\" href=\"#\">Source</a></figcaption><pre><code>func Verify(hash string) bool {\n  return chain.Has(hash)\n}</code></pre></figure>",
+      "css": ".ds-code{margin:0;background:#131317;border:1px solid #2a2a31;color:rgba(243,243,239,.9)} .ds-code figcaption{display:flex;justify-content:space-between;align-items:center;height:40px;padding:0 16px;border-bottom:1px solid #2a2a31} .ds-cl{font-family:Archivo,system-ui,sans-serif;font-size:12px;font-weight:700;font-stretch:85%;letter-spacing:.08em;text-transform:uppercase;color:#9c9ca6;text-decoration:none} a.ds-cl:hover{color:#f3f3ef} .ds-code pre{margin:0;padding:24px;overflow-x:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.625}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Timing Tower",
+    "overview": "**Creative North Star: \"The Timing Tower\"**\n\nThe site is a live race broadcast. A black screen carries a stack of numbered, ruled bars; white position blocks hold heavy condensed italic numerals; status is told by small coloured tyre rings. The tower is the navigation and every project is a car on track. Recognisable with no content at all: a black screen with numbered bars on the left.\n\nDensity is broadcast density: tight 56px rows, hairline rules, tabular numerals, and then enormous condensed italic display type where the graphic wants to shout. Surfaces are flat, hard-edged and ruled. Nothing floats, nothing glows, except the start lights, which glow because real start lights do.\n\nMotion is one grammar, borrowed from the broadcast: five lights once per session, a tower pair that overtakes into place with a position tick, graphics that wipe in from the left, and a team-radio waveform that pulses on hover. All of it stops under reduced motion.",
+    "keyCharacteristics": [
+      "Broadcast-black ground (void) with chalk-white type and position blocks.",
+      "Ruled rows and hairline grids instead of cards.",
+      "One display voice: Archivo 900 italic at 62% width, uppercase.",
+      "Status colours live in tyre markers; red lives in the start lights.",
+      "One motion grammar, entirely off under prefers-reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Job Rule",
+        "body": "Purple and yellow mark tyre status and nothing else. Green marks live, a gained place, or the go-hover of the primary button. Red is the start lights. A signal colour used anywhere else is a defect.",
+        "section": "colors"
+      },
+      {
+        "name": "The White Is The Accent Rule",
+        "body": "Emphasis is made by inverting to chalk-on-void or void-on-chalk, never by adding a new hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Voice Rule",
+        "body": "Display type is always Archivo 900 italic at 62% width, uppercase. No second display face, no upright display.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Is Data Rule",
+        "body": "JetBrains Mono appears only for code and the rig spec. It is not a labelling or decoration voice.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lamp Is The Only Glow Rule",
+        "body": "Glow belongs to the start lights because real lamps glow. Rows, panels, buttons and type never carry shadow or glow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do build lists as ruled rows (1px rule top and bottom) or hairline grids drawn with a 1px gap over rule.",
+      "Do set position numbers and project codes in Archivo 900 italic at 62% width, void on a chalk block.",
+      "Do show project status only through the tyre marker: green live, purple source, yellow in development.",
+      "Do keep every animation inside the one grammar and switch it off under prefers-reduced-motion.",
+      "Do keep corners square; round only tyre markers and start lamps."
+    ],
+    "donts": [
+      "Don't use cards, gradients, or shadows on surfaces; the lit start lamp is the only glow.",
+      "Don't use red (lights) outside the start sequence, or purple and yellow outside tyre markers.",
+      "Don't introduce a second display face or set display type upright or at normal width.",
+      "Don't use F1, team, Red Bull or sponsor logos, liveries, or anything implying endorsement.",
+      "Don't show invented metrics, counts or testimonials; every number on screen must be real (positions, years, real facts)."
+    ]
+  }
+}

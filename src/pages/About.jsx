@@ -1,435 +1,144 @@
-import { Helmet } from "react-helmet-async";
+import { profile, career, education, leadership, garage, rig, offTrack, nextSeason } from "../data/profile";
+
+function Heading({ children }) {
+  return <h2 className="display text-[clamp(48px,7vw,104px)]">{children}</h2>;
+}
 
 export default function About() {
   return (
-    <div className="w-full">
-      <Helmet>
-        <title>About | Kiran</title>
-        <meta name="description" content="About Kiran Katakam — Computer Science student at VIT-AP. Backend architecture, music production, Minecraft systems, and Formula 1 enthusiast." />
-      </Helmet>
+    <>
+      <title>About · Kiran Katakam</title>
+      <meta name="description" content="About Kiran Katakam: Computer Science at VIT-AP, backend internships, his stack, and off-track interests in Formula 1, Minecraft and music." />
 
-      {/* ── Page Content Container ── */}
-      <div className="max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-16">
-
-        {/* ════════════════════════════════════════════
-            SECTION 1: Page Header
-        ════════════════════════════════════════════ */}
-        <header className="flex flex-col gap-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant w-fit rounded">
-            <span className="material-symbols-outlined text-tertiary text-sm">person_pin</span>
-            <span className="font-label-pixel text-label-pixel text-tertiary tracking-widest">
-              SYSTEM_PROFILE
-            </span>
-          </div>
-          <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase">
-            All About <span className="text-primary">Kiran.</span>
+      <section className="wrap pt-8 lg:pt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-end">
+        <div>
+          <span className="inline-block bg-chalk text-void font-black italic [font-stretch:62%] text-[clamp(40px,5vw,64px)] leading-none px-4 py-2">{profile.abbr}</span>
+          <h1 className="display text-[clamp(76px,13vw,184px)] mt-6">
+            Kiran
+            <br />
+            Katakam
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-3xl border-l-2 border-secondary-container pl-4">
-            Backend-focused developer obsessed with system architecture, low-latency execution,
-            and building infrastructure that scales. Currently pursuing Computer Science at VIT-AP University.
-          </p>
-        </header>
-
-        {/* ════════════════════════════════════════════
-            SECTION 2: Bento Grid — Core Identity + FAST_FETCH
-        ════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-
-          {/* ── Core Identity Card (8-col) ── */}
-          <section className="md:col-span-8 bg-surface-container-low border border-outline-variant p-6 md:p-8 pixel-noise corner-brackets relative">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-secondary-container">data_object</span>
-              <h2 className="font-headline-md text-headline-md text-on-surface uppercase">
-                Core Identity
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Portrait Placeholder */}
-              <div className="img-placeholder min-h-[280px] rounded relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-container/40 to-surface-container"></div>
-                <span className="font-label-pixel text-label-pixel text-outline z-10 relative">
-                  [ PORTRAIT IMAGE ]
-                </span>
-              </div>
-              {/* Obsessions List */}
-              <div className="flex flex-col gap-4">
-                <h3 className="font-label-pixel text-label-pixel text-tertiary tracking-widest uppercase">
-                  Current Obsessions
-                </h3>
-                <ul className="flex flex-col gap-3">
-                  {[
-                    { icon: "hub", label: "Backend Architecture", desc: "Learning Backend Systems while building" },
-                    { icon: "music_note", label: "Music", desc: "Might be listening to Arctic Monkeys" },
-                    { icon: "sports_esports", label: "Minecraft", desc: "Building worlds & Exploring with elytra" },
-                    { icon: "speed", label: "Formula 1", desc: "Obsessing over Max Verstappen" },
-                  ].map((item) => (
-                    <li key={item.label} className="flex items-start gap-3 p-3 bg-surface border border-outline-variant/50 rounded group hover:border-tertiary/50 transition-colors">
-                      <span className="material-symbols-outlined text-primary group-hover:text-tertiary transition-colors mt-0.5">{item.icon}</span>
-                      <div>
-                        <div className="font-body-md text-body-md text-on-surface font-semibold">{item.label}</div>
-                        <div className="font-code text-code text-on-surface-variant text-xs mt-0.5">{item.desc}</div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* ── FAST_FETCH Card (4-col) ── */}
-          <section className="md:col-span-4 bg-surface-container border border-outline-variant p-6 dirt-texture shadow-hard-dark">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-tertiary">terminal</span>
-              <h2 className="font-label-pixel text-label-pixel text-on-surface tracking-widest">
-                FAST_FETCH
-              </h2>
-            </div>
-            <div className="flex flex-col gap-3 font-code text-code">
-              {[
-                { key: "OS", value: "Fedora Linux 44", color: "text-primary" },
-                { key: "Host", value: "VivoBook S15", color: "text-tertiary" },
-                { key: "Processor", value: "i5 - 12500H", color: "text-on-surface" },
-                { key: "DE", value: "KDE Plasma", color: "text-secondary" },
-                { key: "Terminal", value: "Konsole", color: "text-primary" },
-                { key: "Editor", value: "VS Code", color: "text-tertiary" },
-                { key: "Browser", value: "Chrome (LOL)", color: "text-on-surface" },
-              ].map((row) => (
-                <div key={row.key} className="flex justify-between items-center py-1 border-b border-outline-variant/30 last:border-b-0">
-                  <span className="text-on-surface-variant">{row.key}</span>
-                  <span className={row.color}>{row.value}</span>
-                </div>
-              ))}
-            </div>
-            {/* Mini system load bar */}
-            <div className="mt-6 pt-4 border-t border-outline-variant">
-              <div className="flex justify-between mb-1">
-                <span className="font-label-pixel text-[10px] text-on-surface-variant">SYS.UPTIME</span>
-                <span className="font-label-pixel text-[10px] text-tertiary">3+ YRS</span>
-              </div>
-              <div className="h-1 w-full bg-surface-container-highest rounded overflow-hidden">
-                <div className="h-full w-4/5 bg-gradient-to-r from-primary to-tertiary rounded"></div>
-              </div>
-            </div>
-          </section>
         </div>
-
-        {/* ════════════════════════════════════════════
-            SECTION 3: Bento Grid — Timeline + Experience
-        ════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-
-          {/* ── Academic Timeline (6-col) ── */}
-          <section className="md:col-span-6 bg-surface-container-low border border-outline-variant p-6 md:p-8 pixel-noise">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-primary">school</span>
-              <h2 className="font-headline-md text-headline-md text-on-surface uppercase">
-                Academic Timeline
-              </h2>
-            </div>
-            <div className="flex flex-col gap-6 relative">
-              {/* Vertical line */}
-              <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-outline-variant/50"></div>
-
-              {[
-                {
-                  year: "2023 - Present",
-                  title: "B.Tech Computer Science",
-                  org: "VIT-AP University",
-                  detail: "Focus: Backend Engineering, Data Structures, ML",
-                  status: "ACTIVE",
-                  statusColor: "text-tertiary",
-                },
-                {
-                  year: "2021 - 2023",
-                  title: "Intermediate (MPC)",
-                  org: "Sri Chaitanya Junior College",
-                  detail: "Mathematics, Physics, Chemistry",
-                  status: "COMPLETED",
-                  statusColor: "text-primary",
-                },
-                {
-                  year: "2021",
-                  title: "SSC (10th Grade)",
-                  org: "ZPP Boys High School",
-                  detail: "Foundation studies",
-                  status: "COMPLETED",
-                  statusColor: "text-primary",
-                },
-              ].map((entry, i) => (
-                <div key={i} className="flex gap-4 items-start relative pl-6">
-                  <div className={`absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 z-10 ${i === 0 ? "bg-tertiary border-tertiary" : "bg-surface-container border-outline-variant"}`}></div>
-                  <div className="flex-1 bg-surface border border-outline-variant/50 p-4 rounded">
-                    <div className="flex justify-between items-start mb-1">
-                      <span className="font-label-pixel text-[10px] text-on-surface-variant">{entry.year}</span>
-                      <span className={`font-label-pixel text-[10px] ${entry.statusColor}`}>{entry.status}</span>
-                    </div>
-                    <h3 className="font-headline-md text-base text-on-surface font-semibold">{entry.title}</h3>
-                    <p className="font-code text-code text-on-surface-variant text-xs mt-1">{entry.org}</p>
-                    <p className="font-body-md text-sm text-on-surface-variant mt-2">{entry.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── Experience (6-col) ── */}
-          <section className="md:col-span-6 bg-surface-container-low border border-outline-variant p-6 md:p-8 pixel-noise">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-secondary-container">work</span>
-              <h2 className="font-headline-md text-headline-md text-on-surface uppercase">
-                Experience
-              </h2>
-            </div>
-            <div className="flex flex-col gap-4">
-              {/* Internship Card */}
-              <div className="bg-surface border border-outline-variant p-5 rounded group hover:border-secondary-container/50 transition-colors">
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h3 className="font-headline-md text-base text-on-surface font-semibold">Full Stack Developer Intern</h3>
-                    <p className="font-code text-code text-primary text-xs mt-0.5">@AquarLabs</p>
-                  </div>
-                  <span className="font-label-pixel text-[10px] text-tertiary px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">
-                    Sep. 2025 - Nov. 2025
-                  </span>
-                </div>
-                <ul className="flex flex-col gap-2 mt-2">
-                  {[
-                    "Designed MongoDB schemas and authentication.",
-                    "Integrated maps for location features.",
-                    "Managed GitHub workflows and backend testing.",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 font-body-md text-sm text-on-surface-variant">
-                      <span className="text-tertiary mt-0.5">&gt;&gt;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-surface border border-outline-variant p-5 rounded group hover:border-primary/50 transition-colors">
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h3 className="font-headline-md text-base text-on-surface font-semibold">Flutter Intern</h3>
-                    <p className="font-code text-code text-tertiary text-xs mt-0.5">@Appe Nexus</p>
-                  </div>
-                  <span className="font-label-pixel text-[10px] text-primary px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">
-                    Feb. 2025 - Jul. 2025
-                  </span>
-                </div>
-                <ul className="flex flex-col gap-2 mt-2">
-                  {[
-                    "Developed cross-platform apps using Flutter.",
-                    "Built responsive, user-friendly interface components.",
-                    "Collaborated, tested, debugged, and maintained features.",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 font-body-md text-sm text-on-surface-variant">
-                      <span className="text-primary mt-0.5">&gt;&gt;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        {/* ════════════════════════════════════════════
-            SECTION 4: Tech Stack (Full Width)
-        ════════════════════════════════════════════ */}
-        <section className="bg-surface-container-low border border-outline-variant p-6 md:p-8 pixel-noise corner-brackets relative">
-          <div className="flex items-center gap-2 mb-8 border-b border-dashed border-outline-variant pb-2">
-            <span className="material-symbols-outlined text-tertiary">code_blocks</span>
-            <h2 className="font-headline-md text-headline-md text-on-surface uppercase">
-              Tech Stack
-            </h2>
-            <span className="font-label-pixel text-[10px] text-on-surface-variant ml-auto">
-              PROFICIENCY_MATRIX
-            </span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div>
+          <p className="text-[19px] leading-relaxed">{profile.intro}</p>
+          <dl className="mt-8 border-t border-rule">
             {[
-              {
-                category: "Languages",
-                color: "border-l-primary",
-                items: ["Python", "JavaScript", "Dart", "Java", "SQL", "C++"],
-              },
-              {
-                category: "Frameworks",
-                color: "border-l-secondary-container",
-                items: ["Node.js", "Express", "Flutter", "Flask"],
-              },
-              {
-                category: "Databases",
-                color: "border-l-tertiary",
-                items: ["Neo4j", "MongoDB", "SQLite", "Hive"],
-              },
-              {
-                category: "Tools & DevOps",
-                color: "border-l-primary",
-                items: ["Git", "Docker", "Linux (Fedora)", "VS Code", "Insomnia"],
-              },
-            ].map((group) => (
-              <div key={group.category} className={`bg-surface border border-outline-variant/50 p-4 rounded border-l-4 ${group.color}`}>
-                <h3 className="font-label-pixel text-label-pixel text-on-surface-variant uppercase tracking-widest mb-3">
-                  {group.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="px-2 py-1 bg-surface-container border border-outline-variant/50 font-code text-[11px] text-on-surface rounded hover:border-tertiary/50 hover:text-tertiary transition-colors cursor-default"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+              ["Full name", profile.fullName],
+              ["Base", "VIT-AP University"],
+              ["Discipline", profile.role],
+              ["Rookie season", "2023"],
+            ].map(([k, v]) => (
+              <div key={k} className="flex justify-between gap-6 py-3 border-b border-rule">
+                <dt className="label self-center">{k}</dt>
+                <dd className="font-bold text-right">{v}</dd>
               </div>
             ))}
-          </div>
-        </section>
+          </dl>
+        </div>
+      </section>
 
-        {/* ════════════════════════════════════════════
-            SECTION 5: Bento Grid — Leadership + Future Roadmap
-        ════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+      <section className="wrap mt-28 lg:mt-36">
+        <Heading>Off track</Heading>
+        <ul className="mt-10 border-t border-rule">
+          {offTrack.map((o) => (
+            <li key={o.title} className="grid gap-3 md:grid-cols-[1fr_1fr] md:gap-10 md:items-center py-6 md:py-8 border-b border-rule">
+              <h3 className="display text-[clamp(52px,7vw,112px)]">{o.title}</h3>
+              <p className="text-[18px] md:text-[20px] max-w-[40ch]">{o.line}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-          {/* ── Leadership (6-col) ── */}
-          <section className="md:col-span-6 bg-surface-container border border-outline-variant p-6 md:p-8 dirt-texture">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-secondary-container">groups</span>
-              <h2 className="font-headline-md text-headline-md text-on-surface uppercase">
-                Leadership
-              </h2>
+      <section className="wrap mt-28 lg:mt-36">
+        <Heading>Career</Heading>
+        <ol className="mt-10 border-t border-rule">
+          {career.map((c) => (
+            <li key={c.team} className="grid gap-4 md:grid-cols-[220px_1fr_1.2fr] md:gap-8 py-8 border-b border-rule">
+              <span className="text-dim font-semibold">{c.when}</span>
+              <div>
+                <h3 className="font-extrabold [font-stretch:80%] uppercase text-[24px] leading-tight">{c.team}</h3>
+                <p className="text-dim mt-1">{c.role}</p>
+              </div>
+              <ul className="space-y-2">
+                {c.notes.map((n) => (
+                  <li key={n} className="flex gap-3">
+                    <span className="mt-[11px] w-3 h-px bg-chalk shrink-0" aria-hidden="true" />
+                    {n}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="wrap mt-28 lg:mt-36 grid gap-16 lg:grid-cols-2">
+        <div>
+          <Heading>Education</Heading>
+          <ol className="mt-10 border-t border-rule">
+            {education.map((e) => (
+              <li key={e.what} className="py-6 border-b border-rule grid grid-cols-[120px_1fr] gap-6">
+                <span className="text-dim font-semibold">{e.when}</span>
+                <div>
+                  <h3 className="font-bold text-[18px]">{e.what}</h3>
+                  <p className="text-dim">{e.where}</p>
+                  {e.detail && <p className="text-dim text-[15px] mt-1">{e.detail}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div>
+          <Heading>Leadership</Heading>
+          <ul className="mt-10 border-t border-rule">
+            {leadership.map((l) => (
+              <li key={l.role} className="py-6 border-b border-rule">
+                <h3 className="font-bold text-[18px]">{l.role}</h3>
+                <p className="text-dim">{l.org}</p>
+                <p className="mt-2">{l.desc}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="wrap mt-28 lg:mt-36">
+        <Heading>The garage</Heading>
+        <p className="mt-4 text-dim text-[17px] max-w-[56ch]">What I build with, and the machine I build on.</p>
+        <div className="mt-10 grid grid-cols-2 gap-px bg-rule border border-rule lg:grid-cols-[repeat(4,1fr)_1.2fr]">
+          {garage.map((g) => (
+            <div key={g.group} className="bg-void p-6">
+              <h3 className="label">{g.group}</h3>
+              <ul className="mt-4 space-y-1.5">
+                {g.items.map((it) => (
+                  <li key={it} className="font-semibold">{it}</li>
+                ))}
+              </ul>
             </div>
-            <div className="flex flex-col gap-4">
-              {[
-                {
-                  role: "Secretary",
-                  org: "Kalki Personality Development Club",
-                  desc: "Coordinated cross-functional teams and delivered 4+ club events.",
-                  icon: "group",
-                },
-                {
-                  role: "Competetive Programming Member",
-                  org: "GDG On Campus VIT-AP",
-                  desc: "Organized competitive programming contests and coding bootcamps",
-                  icon: "emoji_events",
-                },
-              ].map((item) => (
-                <div key={item.role} className="flex items-start gap-3 p-3 bg-surface-container-low border border-outline-variant/50 rounded">
-                  <span className="material-symbols-outlined text-primary mt-0.5">{item.icon}</span>
-                  <div>
-                    <div className="font-body-md text-body-md text-on-surface font-semibold">{item.role}</div>
-                    <div className="font-code text-code text-tertiary text-xs">{item.org}</div>
-                    <div className="font-body-md text-sm text-on-surface-variant mt-1">{item.desc}</div>
-                  </div>
+          ))}
+          <div className="bg-bar p-6 col-span-2 md:col-span-1 lg:col-span-1">
+            <h3 className="label">The rig</h3>
+            <dl className="mt-4 space-y-1.5 font-mono text-[13px]">
+              {rig.map(([k, v]) => (
+                <div key={k} className="flex justify-between gap-4">
+                  <dt className="text-dim">{k}</dt>
+                  <dd className="text-right">{v}</dd>
                 </div>
               ))}
-            </div>
-          </section>
-
-          {/* ── Future Roadmap (6-col) ── */}
-          <section className="md:col-span-6 bg-surface-container border border-outline-variant p-6 md:p-8 dirt-texture shadow-hard-muted">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-tertiary">rocket_launch</span>
-              <h2 className="font-headline-md text-headline-md text-on-surface uppercase">
-                Future Roadmap
-              </h2>
-            </div>
-            <p className="font-body-md text-body-md text-on-surface-variant mb-6">
-              Current exploration vectors and areas of active research.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {[
-                { label: "Distributed Systems", color: "bg-primary-container border-primary text-primary" },
-                { label: "Kubernetes", color: "bg-surface border-outline-variant text-on-surface" },
-                { label: "Fedora", color: "bg-surface border-tertiary/30 text-tertiary" },
-                { label: "DevOps", color: "bg-surface border-outline-variant text-on-surface" },
-                { label: "DSA", color: "bg-surface border-secondary-container/30 text-secondary" },
-                { label: "Databases", color: "bg-surface border-outline-variant text-on-surface" },
-                { label: "CI/CD Pipelines", color: "bg-primary-container border-primary text-primary" },
-                { label: "Cloud Architecture", color: "bg-surface border-tertiary/30 text-tertiary" },
-              ].map((tag) => (
-                <span
-                  key={tag.label}
-                  className={`px-3 py-1.5 rounded font-label-pixel text-label-pixel border ${tag.color} hover:scale-105 transition-transform cursor-default`}
-                >
-                  {tag.label}
-                </span>
-              ))}
-            </div>
-          </section>
+            </dl>
+          </div>
         </div>
+      </section>
 
-        {/* ════════════════════════════════════════════
-            SECTION 6: Passion — F1 (Full Bleed)
-        ════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden border border-outline-variant rounded">
-          {/* Hero image */}
-          <div className="relative min-h-[300px] md:min-h-[400px]">
-            <img
-              src="/max.jpg"
-              alt="Max Verstappen driving a Formula 1 car"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-          {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-            <div className="max-w-layout mx-auto">
-              <span className="font-label-pixel text-label-pixel text-secondary-container tracking-widest uppercase mb-2 block">
-                OFF_TRACK // PASSION
-              </span>
-              <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase mb-3">
-                Max Verstappen &amp; the Art of Precision
-              </h2>
-              <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-                Formula 1 isn't just a sport — it's a masterclass in real-time data engineering.
-                Every lap generates gigabytes of telemetry. The driver who processes that feedback
-                loop the fastest wins. That's exactly the kind of systems-thinking that drives my code.
-              </p>
-            </div>
-          </div>
-          {/* Scanline overlay */}
-          <div className="absolute inset-0 scanline pointer-events-none"></div>
-        </section>
-
-        {/* ════════════════════════════════════════════
-            SECTION 7: Passion — Minecraft (Full Bleed)
-        ════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden border border-outline-variant rounded">
-          {/* Hero image */}
-          <div className="relative min-h-[300px] md:min-h-[400px]">
-            <img
-              src="/mc.jpg"
-              alt="Minecraft landscape"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-          {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-            <div className="max-w-layout mx-auto">
-              <span className="font-label-pixel text-label-pixel text-[#71B555] tracking-widest uppercase mb-2 block">
-                OFF_TRACK // PASSION
-              </span>
-              <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase mb-3">
-                Minecraft &amp; Computational Thinking
-              </h2>
-              <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-                Before I wrote my first line of Python, I was building ALUs in Minecraft redstone.
-                The game's constraint-based engineering — limited resources, physics quirks,
-                emergent complexity — mirrors the exact kind of problem-solving required in backend systems.
-              </p>
-            </div>
-          </div>
-          {/* Scanline overlay */}
-          <div className="absolute inset-0 scanline pointer-events-none"></div>
-        </section>
-
-      </div>
-    </div>
+      <section className="wrap mt-28 lg:mt-36">
+        <Heading>Next season</Heading>
+        <p className="mt-4 text-dim text-[17px] max-w-[56ch]">What I am learning and pushing toward next.</p>
+        <ul className="mt-8 flex flex-wrap gap-3">
+          {nextSeason.map((n) => (
+            <li key={n} className="border border-rule px-4 py-2 font-bold uppercase [font-stretch:80%] tracking-[0.04em]">{n}</li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }

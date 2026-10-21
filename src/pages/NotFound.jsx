@@ -1,24 +1,24 @@
 import { Link } from "react-router-dom";
+import Icon from "../components/Icon";
 
 export default function NotFound() {
   return (
-    <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-24 flex flex-col items-center justify-center min-h-[60vh] text-center">
-      <span className="font-display-lg text-[120px] md:text-[180px] leading-none text-outline-variant/30 font-extrabold select-none">
-        404
-      </span>
-      <h1 className="font-headline-lg text-headline-lg text-on-surface mb-4 -mt-4">
-        PAGE_NOT_FOUND
-      </h1>
-      <p className="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md">
-        The requested route does not exist in the system registry. It may have been moved or decommissioned.
-      </p>
-      <Link
-        to="/"
-        className="font-label-pixel text-label-pixel text-tertiary hover:text-on-background transition-colors inline-flex items-center gap-2 group"
-      >
-        <span className="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
-        RETURN_TO_HOME
-      </Link>
-    </div>
+    <section className="wrap pt-16 lg:pt-24 min-h-[60vh]">
+      <title>Page not found · Kiran Katakam</title>
+      <div className="inline-flex items-stretch">
+        <span className="bg-chalk text-void font-black italic [font-stretch:62%] text-[34px] leading-none px-4 py-2">DNF</span>
+        <span className="border border-l-0 border-rule px-4 flex items-center label">Error 404</span>
+      </div>
+      <h1 className="display text-[clamp(72px,13vw,184px)] mt-6">Off the track</h1>
+      <p className="mt-5 text-dim text-[17px] max-w-[52ch]">This page does not exist. It may have moved, or the link has a typo.</p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link to="/" className="inline-flex items-center gap-2 bg-chalk text-void px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:bg-green transition-colors">
+          <Icon name="left" /> Back to the grid
+        </Link>
+        <Link to="/projects" className="inline-flex items-center gap-2 border border-rule px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:border-chalk transition-colors">
+          All projects
+        </Link>
+      </div>
+    </section>
   );
 }

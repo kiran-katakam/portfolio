@@ -1,399 +1,312 @@
-export const projectsData = {
-  cinegraph: {
+// Every fact here is taken from the project's public repo (code, package files, README).
+// Do not add metrics, user counts or deployment claims that the repos cannot back up.
+
+const GH = "https://github.com/kiran-katakam";
+
+export const projects = [
+  {
+    slug: "verify-on-chain",
+    abbr: "VOC",
+    title: "VerifyOnChain",
+    tagline: "Academic certificates, verified on Ethereum",
+    year: 2026,
+    status: "live",
+    summary:
+      "Universities issue certificates as hashes on a smart contract. Anyone can check one by scanning its QR code. The contract stores only the hash, the issuing wallet and a timestamp, and only the original issuer can revoke.",
+    links: {
+      live: "https://verify-on-chain-frontend.vercel.app",
+      repos: [
+        { label: "Contracts", url: `${GH}/verify_on_chain_contracts` },
+        { label: "Backend", url: `${GH}/verify_on_chain_backend` },
+        { label: "Frontend", url: `${GH}/verify_on_chain_frontend` },
+      ],
+    },
+    stack: ["Solidity", "Hardhat", "OpenZeppelin", "Ethers.js", "Express", "MongoDB", "React"],
+    facts: [
+      { key: "NETWORK", value: "Sepolia testnet" },
+      { key: "CONTRACT_TESTS", value: "12 (Hardhat)" },
+      { key: "ROLES", value: "Admin · University · Verifier" },
+    ],
+    highlights: [
+      {
+        title: "Issuer allow-list",
+        desc: "The contract owner authorizes university wallets. Only an authorized issuer can write a certificate, and each hash can be issued once.",
+      },
+      {
+        title: "Prepare, sign, confirm",
+        desc: "The API prepares each certificate or revocation, the university's wallet signs the transaction, and the API confirms it once it lands on-chain.",
+      },
+      {
+        title: "QR verification",
+        desc: "The backend generates a QR code per certificate. The verifier page scans it and checks the hash against the contract.",
+      },
+      {
+        title: "Revocation",
+        desc: "Only the wallet that issued a certificate can revoke it. Verification then reports it as no longer valid.",
+      },
+    ],
+    code: {
+      file: "contracts/VerifyOnChain.sol",
+      url: `${GH}/verify_on_chain_contracts/blob/main/contracts/VerifyOnChain.sol`,
+      source: `function issueCertificate(bytes32 fieldHash) external {
+    require(authorizedIssuers[msg.sender], "Not an authorized issuer");
+    require(
+        certificates[fieldHash].timestamp == 0,
+        "Certificate already exists"
+    );
+
+    certificates[fieldHash] = Certificate({
+        fieldHash: fieldHash,
+        issuer: msg.sender,
+        timestamp: block.timestamp,
+        isValid: true
+    });
+
+    emit CertificateIssued(fieldHash, msg.sender, block.timestamp);
+}`,
+    },
+  },
+  {
+    slug: "cinegraph",
+    abbr: "CNG",
     title: "Cinegraph",
-    subtitle: "Movie Recommendation Engine",
-    statusBadge: { label: "STATUS: DEPLOYED", color: "bg-primary-container text-on-primary-container" },
-    typeBadge: { label: "GRAPH_DB", color: "bg-surface-container-highest text-tertiary-fixed" },
-    description:
-      "A graph-powered movie recommendation engine leveraging Neo4j's native graph traversal. The system models complex cinematic relationships — actors, directors, genres, and user ratings — as a rich knowledge graph, enabling deep collaborative filtering that outperforms traditional relational approaches.",
-    heroTitle: "Cinegraph",
-    heroTitleHighlight: "graph",
-    sections: [
-      {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 8,
-            icon: "hub",
-            iconColor: "text-tertiary-fixed",
-            title: "Architecture Overview",
-            variant: "diagram",
-            content: {
-              placeholderLabel: "[ GRAPH ARCHITECTURE DIAGRAM ]",
-              overlayText: "> RENDERING GRAPH_SCHEMA... OK",
-            },
-          },
-          {
-            colSpan: 4,
-            icon: "database",
-            iconColor: "text-secondary-container",
-            title: "System Metrics",
-            variant: "stats",
-            content: {
-              rows: [
-                { key: "DB_ENGINE", value: "Neo4j 5.x", color: "text-primary", borderColor: "border-l-primary" },
-                { key: "NODE_COUNT", value: "50K+", color: "text-tertiary-fixed", borderColor: "border-l-tertiary-fixed" },
-                { key: "REL_TYPES", value: "ACTED_IN, DIRECTED, RATED", color: "text-secondary-container", borderColor: "border-l-secondary-container" },
-                { key: "API_LAYER", value: "Express/REST", color: "text-on-surface", borderColor: "" },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 7,
-            icon: "code",
-            iconColor: "text-tertiary-fixed",
-            title: "Cypher Query Engine",
-            variant: "code",
-            content: {
-              filename: "queries/recommendations.cypher",
-              language: "cypher",
-              code: `MATCH (u:User {id: $userId})-[r:RATED]->(m:Movie)
-WHERE r.rating >= 4.0
-WITH u, collect(m) AS likedMovies
-UNWIND likedMovies AS movie
-MATCH (movie)<-[:RATED]-(other:User)-[r2:RATED]->(rec:Movie)
-WHERE NOT rec IN likedMovies
-  AND r2.rating >= 4.0
-WITH rec, count(DISTINCT other) AS score,
-     avg(r2.rating) AS avgRating
-RETURN rec.title, rec.year, score, avgRating
-ORDER BY score DESC, avgRating DESC
-LIMIT 20`,
-            },
-          },
-          {
-            colSpan: 5,
-            title: null,
-            variant: "role-stack",
-            content: {
-              role: {
-                icon: "engineering",
-                iconColor: "text-primary",
-                title: "Execution Role",
-                items: [
-                  "Full-Stack Architecture",
-                  "Graph Data Modeling",
-                  "Recommendation Algorithm Design",
-                  "REST API Development",
-                ],
-              },
-              stack: {
-                icon: "code_blocks",
-                title: "Tech Stack",
-                items: [
-                  { label: "Node.js", primary: false },
-                  { label: "Neo4j", primary: false },
-                  { label: "Express", primary: false },
-                  { label: "React", primary: false },
-                  { label: "Cypher", primary: false },
-                  { label: "REST API", primary: true },
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-
-  "water-scarcity-ews": {
-    title: "Agricultural Water Scarcity EWS",
-    subtitle: "Early Warning System",
-    statusBadge: { label: "STATUS: ACTIVE_DEPLOYMENT", color: "bg-primary-container text-on-primary-container" },
-    typeBadge: { label: "EWS_SYSTEM", color: "bg-surface-container-highest text-tertiary-fixed", icon: "warning" },
-    description:
-      "Early Warning System for 13 Andhra Pradesh districts. A robust, data-driven architecture processing 15 years of historical telemetry to predict scarcity events before they hit critical thresholds.",
-    heroTitle: "Agricultural Water Scarcity EWS",
-    heroTitleHighlight: "EWS",
-    sections: [
-      {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 8,
-            icon: "insights",
-            iconColor: "text-tertiary-fixed",
-            title: "Core Finding",
-            variant: "finding",
-            content: {
-              highlightParts: [
-                { text: "Analysis demonstrated that ", type: "normal" },
-                { text: "Infrastructure Health", type: "highlight", color: "text-secondary-container" },
-                { text: " is a stronger predictor of imminent scarcity than raw ", type: "normal" },
-                { text: "Rainfall Data", type: "highlight", color: "text-primary" },
-                { text: " alone.", type: "normal" },
-              ],
-            },
-          },
-          {
-            colSpan: 4,
-            icon: "database",
-            iconColor: "text-secondary-container",
-            title: "Telemetry",
-            variant: "stats",
-            content: {
-              rows: [
-                { key: "DATA_VOLUME", value: "190K+ REC", color: "text-tertiary-fixed", borderColor: "border-l-tertiary-fixed" },
-                { key: "MODEL_1", value: "K-MEANS", color: "text-primary", borderColor: "border-l-primary" },
-                { key: "MODEL_2", value: "RND_FOREST", color: "text-secondary-container", borderColor: "border-l-secondary-container" },
-                { key: "TECHNIQUE", value: "ANOMALY_DET", color: "text-on-surface", borderColor: "" },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 7,
-            icon: null,
-            title: null,
-            variant: "diagram",
-            content: {
-              placeholderLabel: "[ STAR SCHEMA ARCHITECTURE DIAGRAM ]",
-              overlayText: "> RENDERING STAR_SCHEMA... OK",
-            },
-          },
-          {
-            colSpan: 5,
-            title: null,
-            variant: "role-stack",
-            content: {
-              role: {
-                icon: "engineering",
-                iconColor: "text-primary",
-                title: "Execution Role",
-                items: [
-                  "Data Engineering & ETL Pipelines",
-                  "Star Schema Warehouse Design",
-                  "OLAP Cubes Construction",
-                  "Predictive Model Analysis",
-                ],
-              },
-              stack: {
-                icon: "code_blocks",
-                title: "Tech Stack",
-                items: [
-                  { label: "Python", primary: false },
-                  { label: "Pandas", primary: false },
-                  { label: "SQLite", primary: false },
-                  { label: "Scikit-learn", primary: false },
-                  { label: "React/Vite", primary: true },
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-
-  "todo-app": {
-    title: "To-Do App",
-    subtitle: "Academic & Personal Task Manager",
-    statusBadge: { label: "SHIPPED // 10-DAY SPRINT", color: "bg-secondary-container text-white", icon: "verified" },
-    typeBadge: null,
-    description:
-      "Academic & Personal Task Manager. A high-performance utility designed for rigorous workflow segmentation.",
-    heroTitle: "To-Do App",
-    heroMeta: {
-      rows: [
-        { key: "ROLE", value: "Full-stack Mobile", valueColor: "text-tertiary" },
-        { key: "STATUS", value: "Deployed", valueColor: "text-secondary-container" },
-        { key: "SYS_ID", value: "TDA-892.4", valueColor: "text-primary", valueFont: "font-code text-code" },
+    tagline: "Movie recommendations by walking a graph",
+    year: 2026,
+    status: "source",
+    summary:
+      "Like a few movies and Cinegraph walks a Neo4j graph for others that share genres, actors or direct similarity edges, then ranks them with a weighted score.",
+    links: {
+      repos: [
+        { label: "Backend", url: `${GH}/cinegraph-backend` },
+        { label: "Frontend", url: `${GH}/cinegraph-frontend` },
       ],
     },
-    sections: [
+    stack: ["Neo4j", "Cypher", "Node.js", "Express", "React", "Vite"],
+    facts: [
+      { key: "NODES", value: "Movie · Genre · Actor · Director" },
+      { key: "EDGES", value: "IN_GENRE · ACTED_IN · DIRECTED_BY · SIMILAR_TO" },
+    ],
+    highlights: [
       {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 8,
-            icon: "data_object",
-            iconColor: "text-tertiary",
-            title: "System Overview",
-            variant: "overview",
-            content: {
-              paragraphs: [
-                "A dedicated Flutter-based task management application architected around a custom academic workflow. The core proposition is strict logical separation of academic and personal tasks, addressing the common failure points of generic to-do lists for students.",
-                "Features specialized data models including mandatory fields for course_codes and hard deadlines, ensuring critical path items are never obfuscated by routine daily tasks.",
-              ],
-              bottomStats: [
-                { label: "Core Tech", value: "Flutter / Dart", color: "text-primary" },
-                { label: "Database", value: "Hive Local", color: "text-tertiary-fixed" },
-                { label: "Architecture", value: "MVVM", color: "text-on-surface" },
-                { label: "Design", value: "Custom UI/UX", color: "text-secondary-container" },
-              ],
-            },
-          },
-          {
-            colSpan: 4,
-            icon: "military_tech",
-            iconColor: "text-secondary-container",
-            title: "Execution Velocity",
-            variant: "velocity",
-            content: {
-              highlights: [
-                { title: "10-Day Rapid Dev", desc: "Concept to functional deployment in a highly compressed timeframe.", color: "border-tertiary-fixed" },
-                { title: "End-to-End Delivery", desc: "Independent execution covering requirements gathering, UI design, and technical implementation.", color: "border-secondary-container" },
-              ],
-              bgIcon: "speed",
-            },
-          },
-        ],
+        title: "Weighted graph score",
+        desc: "Shared genres count ×2, shared actors ×3 and direct similarity edges ×5. Ties break on rating, and the top 24 come back.",
       },
       {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 6,
-            icon: "memory",
-            iconColor: "text-primary",
-            title: "Architecture & Persistence",
-            variant: "architecture",
-            content: {
-              intro: "Engineered for zero-latency interactions utilizing a robust local-first strategy.",
-              features: [
-                { icon: "check_box", iconColor: "text-tertiary", title: "Hive Database:", titleColor: "text-tertiary-fixed", desc: "Lightweight, lightning-fast key-value database written in pure Dart, ensuring immediate state updates without network dependency." },
-                { icon: "check_box", iconColor: "text-primary", title: "State Management:", titleColor: "text-primary-fixed", desc: "Provider-based architecture decoupling business logic from the UI layer for maintainability." },
-              ],
-            },
-          },
-          {
-            colSpan: 6,
-            title: null,
-            variant: "mobile-mockup",
-            content: {},
-          },
-        ],
+        title: "Express API",
+        desc: "Endpoints for search, movie detail, genre browsing and recommendations, all backed by Cypher queries through the Neo4j driver.",
+      },
+      {
+        title: "React client",
+        desc: "Debounced search, a liked-movies sidebar and a recommendations section that re-queries as your picks change.",
       },
     ],
-  },
+    code: {
+      file: "server.js · POST /recommend",
+      url: `${GH}/cinegraph-backend/blob/main/server.js`,
+      source: `// Genre-based similarity
+OPTIONAL MATCH (liked)-[:IN_GENRE]->(g:Genre)<-[:IN_GENRE]-(candidate:Movie)
+WHERE NOT candidate.movieId IN $movieIds
+WITH candidate, count(g) AS sharedGenres
 
-  infinity: {
-    title: "Infinity",
-    subtitle: "University Wi-Fi Authentication Utility",
-    statusBadge: { label: "PROJECT", color: "bg-tertiary-fixed text-background" },
-    typeBadge: { label: "// Authenticate", color: "text-outline-variant", plain: true },
-    description:
-      "University Wi-Fi Authentication Utility. An Android application designed to automate captive portal logins by analyzing and streamlining client-side authentication workflows. A widely adopted tool built on robust network request handling.",
-    heroTitle: "Infinity",
-    heroMeta: {
-      cards: [
-        { label: "Role", value: "Co-Developer" },
-        { label: "Tech Stack", value: "Flutter, Dart" },
-        { label: "Domain", value: "Network Auth" },
-      ],
+// Actor-based boost
+OPTIONAL MATCH (a:Actor)-[:ACTED_IN]->(likedM:Movie)
+WHERE likedM.movieId IN $movieIds
+OPTIONAL MATCH (a)-[:ACTED_IN]->(candidate)
+WITH candidate, sharedGenres, count(DISTINCT a) AS sharedActors
+
+// Direct similarity edge boost
+OPTIONAL MATCH (likedM2:Movie)-[:SIMILAR_TO]-(candidate)
+WHERE likedM2.movieId IN $movieIds
+WITH candidate, sharedGenres, sharedActors, count(likedM2) AS directSimilarity
+
+WITH candidate,
+     (sharedGenres * 2 + sharedActors * 3 + directSimilarity * 5) AS score
+...
+ORDER BY score DESC, candidate.rating DESC
+LIMIT 24`,
     },
-    sections: [
-      {
-        type: "section-header",
-        icon: "code_blocks",
-        iconColor: "text-secondary-container",
-        title: "Architecture & Implementation",
-      },
-      {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 8,
-            title: "Network Request Log",
-            variant: "code",
-            content: {
-              filename: "lib/auth/request_handler.dart",
-              language: "dart",
-              code: "Future<AuthResult> executeAuthPayload(Payload data) async {\n  try {\n    final response = await http.post(\n      Uri.parse(Constants.authEndpoint),\n      headers: {\n        'Content-Type': 'application/x-www-form-urlencoded',\n        'User-Agent': 'Infinity-Client/1.0',\n      },\n      body: data.toFormData(),\n    );\n\n    if (response.statusCode == 200) {\n      return AuthParser.analyzeResponse(response.body);\n    } else {\n      throw NetworkException('Unexpected: ${response.statusCode}');\n    }\n  } catch (e) {\n    Logger.error('Auth Workflow Failed: $e');\n    return AuthResult.failure;\n  }\n}",
-            },
-          },
-          {
-            colSpan: 4,
-            title: "Key Capabilities",
-            variant: "capabilities",
-            content: {
-              items: [
-                { icon: "bolt", title: "Request Automation", desc: "Automated execution of multi-step captive portal forms." },
-                { icon: "search_insights", title: "Workflow Analysis", desc: "Reverse engineering client-side validation logic." },
-                { icon: "verified", title: "Real-World Utility", desc: "Streamlining campus connectivity for thousands of users." },
-              ],
-            },
-          },
-        ],
-      },
-    ],
   },
-
-  "cdc-cracker": {
+  {
+    slug: "cdc-cracker",
+    abbr: "CDC",
     title: "CDC Cracker",
-    subtitle: "Course Assistant",
-    statusBadge: null,
-    typeBadge: null,
-    description:
-      "Organizes VIT-AP course and assessment info via custom interfaces and REST APIs. A robust backend architecture focusing on seamless data extraction and processing.",
-    heroTitle: "CDC Cracker",
-    heroSubTitle: "Course Assistant",
-    sections: [
+    tagline: "Course and assessment prep for VIT-AP",
+    year: 2026,
+    status: "source",
+    summary:
+      "Organizes courses, assessments, multiple-choice and coding questions in one place, with an admin panel for managing the content and an in-browser code editor.",
+    links: {
+      repos: [
+        { label: "Backend", url: `${GH}/cdcracker_backend` },
+        { label: "Frontend", url: `${GH}/cdcracker_frontend` },
+      ],
+    },
+    stack: ["Node.js", "Express", "MongoDB", "Mongoose", "JWT", "React", "CodeMirror"],
+    facts: [
+      { key: "MODELS", value: "Course · Assessment · MCQ · Coding" },
+      { key: "EDITOR_LANGS", value: "C++ · Java · Python · SQL" },
+    ],
+    highlights: [
       {
-        type: "bento-row",
-        items: [
-          {
-            colSpan: 8,
-            icon: "account_tree",
-            iconColor: "text-outline",
-            title: "System Architecture",
-            variant: "diagram",
-            content: {
-              placeholderLabel: "[ SYSTEM ARCHITECTURE DIAGRAM ]",
-              overlayText: null,
-            },
-          },
-          {
-            colSpan: 4,
-            title: null,
-            variant: "role-stack",
-            content: {
-              role: {
-                icon: "engineering",
-                iconColor: "text-secondary-container",
-                title: "My Role",
-                items: [
-                  "Backend Development",
-                  "API Design",
-                ],
-                itemDescriptions: [
-                  "Architecting core logic and data flow.",
-                  "Structuring robust REST endpoints.",
-                ],
-                itemIcons: ["dns", "api"],
-              },
-              stack: {
-                icon: "memory",
-                title: "Tech Stack",
-                items: [
-                  { label: "Node.js", primary: false },
-                  { label: "REST APIs", primary: false },
-                  { label: "JavaScript", primary: false },
-                  { label: "AI Frontend", primary: true },
-                ],
-              },
-            },
-          },
-        ],
+        title: "Content model",
+        desc: "Mongoose models for courses, assessments, MCQs and coding questions, each with its own REST routes.",
       },
       {
-        type: "features",
-        title: "Core Features",
-        items: [
-          { icon: "hub", title: "Backend Architecture", desc: "Scalable and efficient server-side structure designed to handle complex data queries and concurrent requests seamlessly." },
-          { icon: "data_object", title: "Data Processing", desc: "Intelligent extraction and sanitization of raw assessment data, transforming it into actionable insights for the frontend." },
-          { icon: "cable", title: "API Integration", desc: "Seamless communication between custom interfaces and external services, ensuring real-time data synchronization." },
-        ],
+        title: "Admin panel",
+        desc: "JWT-protected dashboard to manage courses, assessments and questions, including bulk MCQ import.",
+      },
+      {
+        title: "Code editor",
+        desc: "CodeMirror with C++, Java, Python and SQL modes for coding questions.",
       },
     ],
+    code: {
+      file: "middleware/auth.js",
+      url: `${GH}/cdcracker_backend/blob/main/middleware/auth.js`,
+      source: `function authenticateToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1]; // "Bearer TOKEN"
+
+  if (!token) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403); // invalid token
+    console.log("Decoded JWT:", user);
+    req.user = user; // attach decoded payload
+    next();
+  });
+}`,
+    },
   },
+  {
+    slug: "water-scarcity-ews",
+    abbr: "WEW",
+    title: "Water Scarcity EWS",
+    tagline: "Agricultural water-stress map of Andhra Pradesh",
+    year: 2026,
+    status: "source",
+    summary:
+      "An interactive map of 13 Andhra Pradesh districts built from 2000–2014 data. Each district opens into its own risk breakdown and trend chart. Built as a data warehousing and mining course project.",
+    links: {
+      repos: [{ label: "Source", url: `${GH}/early_warning_system_for_agriculture_scarcity` }],
+    },
+    stack: ["React", "D3.js", "TopoJSON", "GeoJSON", "K-Means"],
+    facts: [
+      { key: "DISTRICTS", value: "13" },
+      { key: "YEARS", value: "2000–2014" },
+      { key: "CLUSTERS", value: "Critical · High-Stress · Moderate · Water-Secure" },
+    ],
+    highlights: [
+      {
+        title: "District map",
+        desc: "D3 renders a choropleth of AP districts from GeoJSON, colored by cluster.",
+      },
+      {
+        title: "Stress clusters",
+        desc: "K-Means sorts districts into Critical, High-Stress, Moderate-Stress and Water-Secure groups.",
+      },
+      {
+        title: "District cards",
+        desc: "Each district shows risk, tank functionality, encroachment, capacity loss and yield, plus a trend chart over the years.",
+      },
+    ],
+    code: {
+      file: "src/data.js",
+      url: `${GH}/early_warning_system_for_agriculture_scarcity/blob/main/src/data.js`,
+      source: `// District-level aggregated stats (from master_dataset + phase5 clustering)
+export const DISTRICT_STATS = {
+  CHITTOOR:      { avg_risk: 0.783, functionality: 33.5, encroachment: 35.7, capacity_loss: 41.2, avg_yield: 0.51, cluster: "Critical",          dominant_label: "Critical"  },
+  KRISHNA:       { avg_risk: 0.267, functionality: 88.1, encroachment: 6.4,  capacity_loss: 9.2,  avg_yield: 3.54, cluster: "Water-Secure",      dominant_label: "Low"       },
+  // ...
+};`,
+    },
+  },
+  {
+    slug: "infinity",
+    abbr: "INF",
+    title: "Infinity",
+    tagline: "Auto-login for VIT-AP campus Wi-Fi",
+    year: 2024,
+    status: "source",
+    summary:
+      "Enter your registration number and password once. Infinity logs you into the campus captive portal whenever the app opens, so moving between blocks no longer means logging out and back in.",
+    links: {
+      repos: [{ label: "Source", url: `${GH}/infinity` }],
+    },
+    stack: ["Flutter", "Dart", "webview_flutter", "shared_preferences", "connectivity_plus"],
+    facts: [
+      { key: "PLATFORMS", value: "Android · iOS" },
+      { key: "CREDIT", value: "Login-variation algorithm by Tarun" },
+    ],
+    highlights: [
+      {
+        title: "Saved once",
+        desc: "Credentials are stored locally with shared_preferences and reused on every launch.",
+      },
+      {
+        title: "Form injection",
+        desc: "A WebView loads the portal and injects JavaScript that fills and submits the login form.",
+      },
+      {
+        title: "Over-limit workaround",
+        desc: "Superscript variants of the registration number pass the portal's backend, which sidesteps the per-ID login limit.",
+      },
+    ],
+    code: {
+      file: "lib/webviewpage.dart",
+      url: `${GH}/infinity/blob/main/lib/webviewpage.dart`,
+      source: `onPageFinished: (String url) {
+  final String jsCode =
+      "document.getElementById('ft_un').value = '\${usernames[i]}';document.getElementById('ft_pd').value = '$password';document.forms[0].submit();";
+  controller.runJavaScript(jsCode);
+  if ((i + 1) > 63) {
+    i = 1;
+  } else {
+    i++;
+  }
+},`,
+    },
+  },
+  {
+    slug: "todo-app",
+    abbr: "TDO",
+    title: "To-Do App",
+    tagline: "Academic and personal tasks, kept apart",
+    year: 2024,
+    status: "in-dev",
+    summary:
+      "A Flutter task manager built for my own semester. Academic tasks carry a course code and due date, personal tasks stay separate, and everything is stored on-device.",
+    links: {
+      repos: [{ label: "Source", url: `${GH}/to_do` }],
+    },
+    stack: ["Flutter", "Dart", "Riverpod", "Hive"],
+    facts: [{ key: "STORAGE", value: "Hive, on-device" }],
+    highlights: [
+      {
+        title: "Two task types",
+        desc: "Academic tasks have a course code, due date and description. Personal tasks have a title, description and due date.",
+      },
+      {
+        title: "Collapsible sections",
+        desc: "Academic, personal or both views, each section expandable on its own.",
+      },
+      {
+        title: "Local-first",
+        desc: "Hive stores tasks on the device and Riverpod keeps the UI in sync.",
+      },
+    ],
+    screenshots: [
+      "https://github.com/user-attachments/assets/6465fa2f-06a6-4da4-a966-4888599ef4ac",
+      "https://github.com/user-attachments/assets/16d334b9-88c1-45b4-8b76-0dff49c2c949",
+      "https://github.com/user-attachments/assets/8762cfbc-c60b-4253-a71c-9df3ea051e6a",
+      "https://github.com/user-attachments/assets/e3447e00-396c-44ea-b777-719fd5f2b408",
+    ],
+  },
+];
+
+// Shown as a tyre-compound style chip: letter in a coloured ring.
+export const STATUS = {
+  live: { label: "Live", letter: "L", color: "text-green" },
+  source: { label: "Source", letter: "S", color: "text-purple" },
+  "in-dev": { label: "In development", letter: "D", color: "text-yellow" },
 };

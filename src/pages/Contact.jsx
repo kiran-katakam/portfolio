@@ -1,171 +1,81 @@
-import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import Icon from "../components/Icon";
+import { profile, socials } from "../data/profile";
+
+// Fixed bar heights so the waveform reads like a voice clip, not noise.
+const bars = Array.from({ length: 64 }, (_, i) => 0.25 + 0.75 * Math.abs(Math.sin(i * 0.55) * Math.cos(i * 0.21)));
+
+const btn = "inline-flex items-center gap-2 px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] transition-colors";
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
+    }
+  };
+
   return (
-    <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col gap-16">
-      <Helmet>
-        <title>Contact | Kiran</title>
-        <meta name="description" content="Get in touch with Kiran Katakam. Available for backend engineering roles, collaboration opportunities, and technical conversations." />
-      </Helmet>
-      {/* ── Page Header ── */}
-      <header className="flex flex-col gap-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant w-fit rounded">
-          <span className="material-symbols-outlined text-tertiary text-sm">mail</span>
-          <span className="font-label-pixel text-label-pixel text-tertiary tracking-widest">
-            SYSTEM_CONTACT
-          </span>
-        </div>
-        <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase">
-          Get In <span className="text-primary">Touch.</span>
-        </h1>
-        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-3xl border-l-2 border-secondary-container pl-4">
-          Available for backend engineering roles, collaboration opportunities,
-          and interesting technical conversations. Don't hesitate to reach out.
-        </p>
-      </header>
+    <>
+      <title>Contact · Kiran Katakam</title>
+      <meta name="description" content="Get in touch with Kiran Katakam about backend engineering roles, collaboration, or technical conversations." />
 
-      {/* ── Main Content Grid ── */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+      <section className="wrap pt-8 lg:pt-12">
+        <h1 className="display text-[clamp(76px,13vw,184px)]">Team radio</h1>
 
-        {/* ── Left: Direct Channels (8-col) ── */}
-        <section className="md:col-span-8 flex flex-col gap-6">
+        <div className="radio mt-10 bg-bar border border-rule">
+          <div className="flex items-stretch border-b border-rule">
+            <span className="bg-chalk text-void font-black italic [font-stretch:62%] text-[30px] leading-none px-4 py-2 flex items-center">{profile.abbr}</span>
+            <span className="px-4 flex items-center font-bold [font-stretch:75%] uppercase tracking-[0.04em] text-[18px]">{profile.name}</span>
+            <span className="ml-auto px-4 hidden sm:flex items-center label">Radio to anyone listening</span>
+          </div>
 
-          {/* Email — Primary CTA */}
-          <a
-            href="mailto:admin@kirankatakam.me"
-            className="group bg-surface-container-low border border-outline-variant p-6 md:p-8 pixel-noise corner-brackets relative flex items-center gap-6 hover:border-tertiary/50 transition-all duration-300"
-          >
-            <div className="w-14 h-14 flex items-center justify-center bg-primary-container border border-outline-variant rounded shrink-0 group-hover:bg-tertiary/10 transition-colors">
-              <span className="material-symbols-outlined text-primary text-2xl group-hover:text-tertiary transition-colors">mail</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="font-label-pixel text-[10px] text-on-surface-variant tracking-widest mb-1">
-                PRIMARY_CHANNEL
-              </div>
-              <div className="font-headline-md text-headline-md text-on-surface group-hover:text-tertiary transition-colors truncate">
-                admin@kirankatakam.me
-              </div>
-            </div>
-            <span className="material-symbols-outlined text-outline-variant group-hover:text-tertiary group-hover:translate-x-1 transition-all">
-              arrow_outward
-            </span>
-          </a>
-
-          {/* Social Grid — 2x2 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
-            {[
-              {
-                label: "GitHub",
-                handle: "@kiran-katakam",
-                url: "https://github.com/kiran-katakam",
-                icon: "code",
-                desc: "Source code & contributions",
-                accentBorder: "hover:border-primary/50",
-              },
-              {
-                label: "LinkedIn",
-                handle: "/in/kirankatakam",
-                url: "https://www.linkedin.com/in/kirankatakam",
-                icon: "work",
-                desc: "Professional network",
-                accentBorder: "hover:border-secondary-container/50",
-              },
-              {
-                label: "Instagram",
-                handle: "@kiran__katakam",
-                url: "https://www.instagram.com/kiran__katakam/",
-                icon: "photo_camera",
-                desc: "Behind the screen",
-                accentBorder: "hover:border-tertiary/50",
-              },
-            ].map((link) => (
-              <a
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group bg-surface-container border border-outline-variant p-5 dirt-texture flex items-start gap-4 transition-all duration-300 ${link.accentBorder}`}
-              >
-                <span className="material-symbols-outlined text-on-surface-variant text-xl group-hover:text-tertiary transition-colors mt-0.5">
-                  {link.icon}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="font-headline-md text-base text-on-surface group-hover:text-tertiary transition-colors">
-                    {link.label}
-                  </div>
-                  <div className="font-code text-[11px] text-on-surface-variant mt-0.5 truncate">
-                    {link.handle}
-                  </div>
-                  <div className="font-body-md text-sm text-on-surface-variant/60 mt-2">
-                    {link.desc}
-                  </div>
-                </div>
-              </a>
+          <div className="wave flex items-center gap-[3px] h-16 px-5 sm:px-8 mt-6" aria-hidden="true">
+            {bars.map((h, i) => (
+              <span
+                key={i}
+                className={`flex-1 bg-chalk/70 ${i > 40 ? "hidden sm:block" : ""}`}
+                style={{ height: `${h * 100}%`, animationDelay: `${(i % 9) * 70}ms` }}
+              />
             ))}
           </div>
-        </section>
 
-        {/* ── Right: Status Panel (4-col) ── */}
-        <aside className="md:col-span-4 flex flex-col gap-6">
+          <blockquote className="px-5 sm:px-8 mt-6 font-black italic [font-stretch:62%] uppercase text-[clamp(26px,3.6vw,48px)] leading-[0.95] max-w-[28ch]">
+            “Open to backend roles, collaboration and good technical problems. Email is the fastest way to reach me.”
+          </blockquote>
 
-          {/* Availability Status */}
-          <div className="bg-surface-container-high border border-outline-variant p-6 rounded dirt-texture shadow-hard-dark">
-            <div className="flex items-center gap-2 mb-6 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-tertiary">sensors</span>
-              <h3 className="font-label-pixel text-label-pixel text-on-background tracking-widest">
-                AVAILABILITY
-              </h3>
-            </div>
-            <div className="flex flex-col gap-4 font-code text-code">
-              <div className="flex justify-between items-center py-1 border-b border-outline-variant/30">
-                <span className="text-on-surface-variant">Status</span>
-                <span className="text-tertiary flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></span>
-                  OPEN
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-1 border-b border-outline-variant/30">
-                <span className="text-on-surface-variant">Response</span>
-                <span className="text-primary">&lt; 24h</span>
-              </div>
-              <div className="flex justify-between items-center py-1 border-b border-outline-variant/30">
-                <span className="text-on-surface-variant">Timezone</span>
-                <span className="text-on-surface">IST (UTC+5:30)</span>
-              </div>
-              <div className="flex justify-between items-center py-1">
-                <span className="text-on-surface-variant">Preferred</span>
-                <span className="text-tertiary">Email</span>
-              </div>
+          <div className="p-5 sm:p-8 mt-8 border-t border-rule flex flex-col gap-6">
+            <a href={`mailto:${profile.email}`} className="font-black italic [font-stretch:62%] uppercase text-[clamp(24px,6.5vw,88px)] leading-none break-words hover:underline decoration-2">
+              {profile.email}
+            </a>
+            <div className="flex flex-wrap gap-3">
+              <a href={`mailto:${profile.email}`} className={`${btn} bg-chalk text-void hover:bg-green`}>
+                Write email <Icon name="out" />
+              </a>
+              <button type="button" onClick={copy} className={`${btn} border border-rule hover:border-chalk`}>
+                <Icon name={copied ? "check" : "copy"} /> <span aria-live="polite">{copied ? "Copied" : "Copy address"}</span>
+              </button>
             </div>
           </div>
+        </div>
 
-          {/* Open To */}
-          <div className="bg-surface-container border border-outline-variant p-6">
-            <div className="flex items-center gap-2 mb-4 border-b border-dashed border-outline-variant pb-2">
-              <span className="material-symbols-outlined text-primary">handshake</span>
-              <h3 className="font-label-pixel text-label-pixel text-on-background tracking-widest">
-                OPEN_TO
-              </h3>
-            </div>
-            <div className="flex flex-col gap-2">
-              {[
-                "Backend Engineering Roles",
-                "Full-Stack Collaborations",
-                "Open Source Projects",
-                "Freelance Opportunities",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 p-2 bg-surface-container-low border border-outline-variant/30 rounded font-body-md text-sm text-on-surface-variant"
-                >
-                  <span className="text-tertiary text-xs">&gt;&gt;</span>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
+        <ul className="mt-16 border-t border-rule">
+          {socials.map((s) => (
+            <li key={s.label} className="border-b border-rule">
+              <a href={s.url} target="_blank" rel="noopener noreferrer" className="group grid grid-cols-[1fr_auto] md:grid-cols-[1fr_1fr_auto] items-center gap-x-6 gap-y-1 py-6 hover:bg-bar transition-colors">
+                <span className="display text-[clamp(44px,6vw,88px)]">{s.label}</span>
+                <span className="text-dim text-[17px] col-start-1 md:col-start-2 row-start-2 md:row-start-1">{s.handle}</span>
+                <Icon name="out" className="w-7 h-7 text-dim group-hover:text-chalk transition-colors row-start-1 col-start-2 md:col-start-3 mr-2" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }

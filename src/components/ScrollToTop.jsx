@@ -2,11 +2,24 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // Pages are lazy-loaded, so the target may not exist yet: retry briefly.
+    let tries = 0;
+    const id = setInterval(() => {
+      const el = document.getElementById(hash.slice(1));
+      if (el || ++tries > 20) {
+        clearInterval(id);
+        el?.scrollIntoView({ block: "start" });
+      }
+    }, 50);
+    return () => clearInterval(id);
+  }, [pathname, hash]);
 
   return null;
 }

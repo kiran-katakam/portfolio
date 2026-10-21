@@ -1,122 +1,110 @@
-import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Tower from "../components/Tower";
+import Tyre from "../components/Tyre";
+import Icon from "../components/Icon";
+import { projects } from "../data/projects";
+import { profile } from "../data/profile";
 
-export default function Home() {
+const rows = [
+  { to: "/about", abbr: profile.abbr, title: profile.name, year: "" },
+  ...projects.map((p) => ({ to: `/projects/${p.slug}`, abbr: p.abbr, title: p.title, year: p.year, status: p.status, project: p })),
+];
+
+function Onboard({ row }) {
+  const p = row.project;
   return (
-    <div className="w-full max-w-layout mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
-      <Helmet>
-        <title>Home | Kiran</title>
-        <meta name="description" content="Dhanumjay Kiran Katakam — Backend-focused developer obsessed with system architecture, low-latency execution, and building infrastructure that scales." />
-      </Helmet>
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
-        {/* ── Left Column: Identity & Intro (Span 8) ── */}
-        <div className="col-span-1 md:col-span-8 flex flex-col gap-12">
-          <header className="flex flex-col gap-4">
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant w-fit rounded">
-              <span className="material-symbols-outlined text-tertiary text-sm">sensors</span>
-              <span className="font-label-pixel text-label-pixel text-tertiary tracking-widest">
-                SYSTEM_ONLINE
-              </span>
-            </div>
-
-            {/* Name */}
-            <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase">
-              Dhanumjay Kiran
-              <br />
-              <span className="text-primary opacity-90">Katakam</span>
-            </h1>
-
-            {/* Tagline */}
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4 border-l-2 border-secondary-container pl-4">
-              Somewhere between curiosity, code, and too many side projects.
-            </p>
-          </header>
+    <div key={row.to} className="wipe border-t border-rule pt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-4">
+      <span className="font-black italic [font-stretch:62%] text-[64px] leading-[0.8] text-chalk/15 select-none" aria-hidden="true">
+        {row.abbr}
+      </span>
+      <div className="min-w-0">
+        <div className="flex items-center gap-3 flex-wrap">
+          <h2 className="font-extrabold [font-stretch:80%] uppercase text-[24px] leading-tight">{p ? p.title : "Driver profile"}</h2>
+          {p && <Tyre status={p.status} withLabel />}
         </div>
-
-        {/* ── Right Column: Telemetry Panel (Span 4) ── */}
-        <div className="col-span-1 md:col-span-4 corner-brackets relative group">
-          <div className="bg-surface-container-high border border-outline-variant p-6 rounded dirt-texture h-full shadow-hard-red group-hover:shadow-hard-yellow transition-shadow duration-300">
-            {/* Panel Header */}
-            <div className="flex justify-between items-center mb-6 border-b border-dashed border-outline-variant pb-2">
-              <h3 className="font-label-pixel text-label-pixel text-on-background tracking-widest">
-                TELEMETRY DATA
-              </h3>
-              <span
-                className="material-symbols-outlined text-secondary-container animate-spin"
-                style={{ animationDuration: "4s" }}
-              >
-                radar
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              {/* Telemetry: Institution */}
-              <div>
-                <div className="flex justify-between items-end mb-1">
-                  <span className="font-code text-code text-on-surface-variant">
-                    LOC.INSTITUTION
-                  </span>
-                  <span className="font-label-pixel text-label-pixel text-primary">
-                    VIT-AP
-                  </span>
-                </div>
-                <div className="bg-surface p-2 border border-outline-variant/50 rounded">
-                  <div className="font-body-md text-body-md text-on-background">
-                    Computer Science (4th Yr)
-                  </div>
-                </div>
-              </div>
-
-              {/* Telemetry: Focus */}
-              <div>
-                <div className="flex justify-between items-end mb-1">
-                  <span className="font-code text-code text-on-surface-variant">
-                    SYS.FOCUS
-                  </span>
-                  <span className="font-label-pixel text-label-pixel text-tertiary">
-                    ACTIVE
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="px-2 py-1 bg-primary-container text-primary font-label-pixel text-[10px] rounded border border-primary/20">
-                    Backend Arch
-                  </span>
-                  <span className="px-2 py-1 bg-surface-variant text-on-background font-label-pixel text-[10px] rounded border border-outline-variant">
-                    Music Prod
-                  </span>
-                  <span className="px-2 py-1 bg-[#2C4123] text-[#71B555] font-label-pixel text-[10px] rounded border border-[#71B555]/30">
-                    Minecraft Sys
-                  </span>
-                </div>
-              </div>
-
-              {/* Performance Meter */}
-              <div className="mt-4">
-                <div className="flex justify-between mb-2">
-                  <span className="font-code text-code text-on-surface-variant text-xs">
-                    CPU.LOAD
-                  </span>
-                  <span className="font-code text-code text-secondary-container text-xs">
-                    92%
-                  </span>
-                </div>
-                <div className="flex h-4 w-full bg-surface border border-outline-variant p-0.5">
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled"></div>
-                  <div className="progress-block filled danger"></div>
-                  <div className="progress-block danger"></div>
-                  <div className="progress-block"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="text-dim mt-2 max-w-[60ch]">{p ? p.summary : "Off track: Formula 1 (Max Verstappen fan), Minecraft worlds and making music. On track: internships at AquarLabs and Appe Nexus, and the stack I build with."}</p>
+        {p && (
+          <ul className="flex flex-wrap gap-x-4 gap-y-1 mt-4">
+            {p.stack.map((s) => (
+              <li key={s} className="label !text-chalk/80">{s}</li>
+            ))}
+          </ul>
+        )}
+        <Link to={row.to} className="inline-flex items-center gap-2 mt-5 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:underline">
+          {p ? "Open telemetry" : "Read the profile"} <Icon name="right" />
+        </Link>
       </div>
     </div>
+  );
+}
+
+export default function Home() {
+  const [active, setActive] = useState(0);
+  const lead = projects.find((p) => p.status === "live") ?? projects[0];
+
+  return (
+    <>
+      <title>Kiran Katakam · Backend developer</title>
+      <meta name="description" content={profile.intro} />
+
+      <section className="wrap pt-8 lg:pt-12 grid gap-10 lg:grid-cols-[minmax(380px,460px)_1fr] lg:gap-16 items-start">
+        <div className="lg:order-2 min-w-0">
+          <h1 className="display text-[clamp(76px,13vw,184px)]">
+            Kiran
+            <br />
+            Katakam
+          </h1>
+          <p className="mt-6 font-extrabold [font-stretch:80%] uppercase tracking-[0.04em] text-[clamp(18px,2vw,24px)]">
+            {profile.role} <span className="text-dim">· builds things, breaks them</span>
+          </p>
+          <p className="mt-3 text-dim text-[17px] max-w-[58ch]">{profile.intro}</p>
+          <div className="hidden lg:block mt-10">
+            <Onboard row={rows[active]} />
+          </div>
+        </div>
+        <div className="lg:order-1 lg:sticky lg:top-24">
+          <Tower rows={rows} active={active} onActive={setActive} />
+        </div>
+      </section>
+
+      <section className="wrap mt-28 lg:mt-40 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16 items-start">
+        <div>
+          <Tyre status={lead.status} withLabel />
+          <h2 className="display text-[clamp(52px,7vw,104px)] mt-4">{lead.title}</h2>
+          <p className="mt-4 font-bold text-[19px]">{lead.tagline}</p>
+          <p className="mt-3 text-dim max-w-[60ch]">{lead.summary}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {lead.links.live && (
+              <a href={lead.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-chalk text-void px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:bg-green transition-colors">
+                Try it live <Icon name="out" />
+              </a>
+            )}
+            <Link to={`/projects/${lead.slug}`} className="inline-flex items-center gap-2 border border-rule px-5 py-3 font-bold uppercase [font-stretch:80%] tracking-[0.06em] hover:border-chalk transition-colors">
+              How it works <Icon name="right" />
+            </Link>
+          </div>
+        </div>
+        <figure className="bg-bar border border-rule min-w-0">
+          <figcaption className="flex items-center justify-between gap-4 h-10 px-4 border-b border-rule">
+            <span className="label truncate">Onboard · {lead.code.file}</span>
+            <a href={lead.code.url} target="_blank" rel="noopener noreferrer" className="label hover:text-chalk shrink-0">Source</a>
+          </figcaption>
+          <pre className="p-4 sm:p-6 overflow-x-auto font-mono text-[13px] leading-relaxed text-chalk/90"><code>{lead.code.source}</code></pre>
+        </figure>
+      </section>
+
+      <section className="wrap mt-28 lg:mt-40">
+        <div className="border-t border-rule pt-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div>
+            <h2 className="display text-[clamp(64px,10vw,150px)]">Box, box.</h2>
+            <p className="mt-4 text-dim text-[17px] max-w-[52ch]">Backend roles, internships, or a system you want someone to stress-test. Radio in.</p>
+          </div>
+          <Link to="/contact" className="inline-flex items-center gap-2 bg-chalk text-void px-6 py-4 font-bold uppercase [font-stretch:80%] tracking-[0.06em] text-[17px] hover:bg-green transition-colors self-start md:self-auto">
+            Open team radio <Icon name="right" />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

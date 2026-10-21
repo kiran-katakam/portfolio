@@ -1,249 +1,167 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================
-   VELOCITY PIXEL — Custom Design System CSS
-   ============================================ */
+/* Archivo (OFL), self-hosted latin subset: variable weight 400–900, width 62–125. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo.woff2") format("woff2");
+}
 
-/* --- Base Reset --- */
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: 400 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-italic.woff2") format("woff2");
+}
+
 @layer base {
   html {
-    scrollbar-width: none;
-  }
-
-  html::-webkit-scrollbar {
-    display: none;
+    background: #08080a;
+    scrollbar-color: #2a2a31 #08080a;
+    scrollbar-width: thin;
   }
 
   body {
-    @apply bg-background text-on-background font-body-md text-body-md antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-void text-chalk font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
   }
 
   ::selection {
-    @apply bg-tertiary text-background;
+    background: #f3f3ef;
+    color: #08080a;
   }
 
-  /* Scrollbar Styling (Chromium/WebKit) */
+  :focus-visible {
+    outline: 2px solid #f3f3ef;
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
+    width: 8px;
+    height: 8px;
+    background: #08080a;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(67, 71, 77, 0.6);
-    border-radius: 3px;
+    background: #2a2a31;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(141, 145, 151, 0.8);
+    background: #9c9ca6;
   }
 }
 
-/* --- Utility Classes --- */
-@layer utilities {
-
-  /* Dirt Block Texture Overlay (Minecraft-inspired) */
-  .dirt-texture {
-    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20zM20 0h20v20H20V0z' fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+@layer components {
+  /* Heavy condensed italic: the broadcast's display voice. */
+  .display {
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: 62%;
+    line-height: 0.86;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
   }
 
-  /* Pixel Noise Texture */
-  .pixel-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  /* Small caps-style data label used in table heads and readouts. */
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    font-stretch: 85%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9c9ca6;
+    line-height: 1;
   }
 
-  /* Pixel Dirt Background (alternate) */
-  .pixel-dirt-bg {
-    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v1H0zm2 2h1v1H2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-  }
-
-  /* Hard Block Shadows (Pixel-lift effect) */
-  .shadow-hard-red {
-    box-shadow: 4px 4px 0px 0px #c90014;
-  }
-
-  .shadow-hard-yellow {
-    box-shadow: 4px 4px 0px 0px #f8e600;
-  }
-
-  .shadow-hard-blue {
-    box-shadow: 4px 4px 0px 0px #b1c9e6;
-  }
-
-  .shadow-hard-navy {
-    box-shadow: 4px 4px 0px 0px #001a30;
-  }
-
-  .shadow-hard-dark {
-    box-shadow: 4px 4px 0px 0px #0d0e10;
-  }
-
-  .shadow-hard-muted {
-    box-shadow: 4px 4px 0px 0px #343537;
-  }
-
-  .shadow-hard-secondary-faint {
-    box-shadow: 4px 4px 0px 0px rgba(255, 180, 171, 0.2);
-  }
-
-  /* Corner Brackets (targeting/construction feel) */
-  .corner-brackets {
-    position: relative;
-  }
-
-  .corner-brackets::before,
-  .corner-brackets::after {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 2px solid #c90014;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 10;
-  }
-
-  .corner-brackets::before {
-    top: -1px;
-    left: -1px;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .corner-brackets::after {
-    bottom: -1px;
-    right: -1px;
-    border-left: none;
-    border-top: none;
-  }
-
-  /* Corner Brackets — Yellow variant */
-  .corner-brackets-yellow::before,
-  .corner-brackets-yellow::after {
-    border-color: #f8e600;
-  }
-
-  /* Corner Brackets — Blue variant */
-  .corner-brackets-blue {
-    position: relative;
-  }
-
-  .corner-brackets-blue::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    border-top: 4px solid #b1c9e6;
-    border-left: 4px solid #b1c9e6;
-    pointer-events: none;
-    z-index: 10;
-    transition: border-color 0.3s ease;
-  }
-
-  .corner-brackets-blue::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 16px;
-    height: 16px;
-    border-bottom: 4px solid #b1c9e6;
-    border-right: 4px solid #b1c9e6;
-    pointer-events: none;
-    z-index: 10;
-    transition: border-color 0.3s ease;
-  }
-
-  /* Hover: turn brackets yellow */
-  .group:hover .corner-brackets-blue::before,
-  .group:hover .corner-brackets-blue::after {
-    border-color: #d9c900;
-  }
-
-  /* Scanline CRT Overlay */
-  .scanline {
-    background: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0) 50%,
-        rgba(0, 0, 0, 0.2) 50%,
-        rgba(0, 0, 0, 0.2));
-    background-size: 100% 4px;
-  }
-
-  /* Blueprint Dashed Line */
-  .blueprint-line {
-    background-image: repeating-linear-gradient(90deg,
-        #43474d,
-        #43474d 4px,
-        transparent 4px,
-        transparent 8px);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: bottom;
-  }
-
-  /* Progress Block Segments */
-  .progress-block {
-    width: calc(10% - 2px);
-    margin-right: 2px;
-    background-color: #343537;
-  }
-
-  .progress-block.filled {
-    background-color: #b1c9e6;
-  }
-
-  .progress-block.danger {
-    background-color: #c90014;
-  }
-
-  /* Card hover lift effect */
-  .card-hover-lift {
-    transition: all 0.3s ease;
-  }
-
-  .card-hover-lift:hover {
-    box-shadow: 6px 6px 0px 0px rgba(255, 180, 171, 0.5);
-    transform: translate(-2px, -2px);
-  }
-
-  /* Image Placeholder */
-  .img-placeholder {
-    @apply bg-surface-container-high border border-outline-variant flex items-center justify-center;
-    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h4v4H0zM8 8h4v4H8zM16 16h4v4h-4zM24 24h4v4h-4zM32 32h4v4h-4z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+  .wrap {
+    @apply w-full max-w-layout mx-auto px-4 md:px-10 lg:px-16;
   }
 }
 
-/* --- Material Symbols Sizing --- */
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-}
-
-/* --- Page Transition Animation --- */
-@keyframes pageEnter {
+/* Broadcast graphics wipe in from the left; the content is visible by default. */
+@keyframes wipe {
   from {
-    opacity: 0;
-    transform: translateY(12px);
+    clip-path: inset(0 100% 0 0);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
   }
 }
 
-.page-enter {
-  animation: pageEnter 0.3s ease-out forwards;
+.wipe {
+  animation: wipe 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Tower rows start in a shuffled order (--d rows away) and slide into the real one.
+   Rows stay visible throughout; only their position animates. */
+@keyframes settle {
+  from {
+    transform: translateY(calc(var(--d, 0) * 100%));
+  }
+  to {
+    transform: none;
+  }
+}
+
+.settle {
+  animation: settle 700ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Position-change chevron: flashes while the row moves, then clears. */
+@keyframes tick {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.tick {
+  animation: tick 1600ms ease-out forwards;
+}
+
+/* Team-radio waveform: bars pulse while the email panel is hovered. */
+@keyframes wave {
+  50% {
+    transform: scaleY(0.35);
+  }
+}
+
+.radio:hover .wave > span,
+.radio:focus-within .wave > span {
+  animation: wave 700ms ease-in-out infinite;
+}
+
+html[data-lights] .settle,
+html[data-lights] .tick,
+html[data-lights] .wipe {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wipe,
+  .settle,
+  .wave > span {
+    animation: none !important;
+  }
+
+  .tick {
+    display: none;
+  }
 }
