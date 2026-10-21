@@ -25,7 +25,7 @@ export default function Contact() {
       <title>Contact · Kiran Katakam</title>
       <meta name="description" content="Get in touch with Kiran Katakam about backend engineering roles, collaboration, or technical conversations." />
 
-      <section className="wrap pt-8 lg:pt-12">
+      <section className="snap-start wrap pt-8 lg:pt-12">
         <h1 className="display text-[clamp(76px,13vw,184px)]">Team radio</h1>
 
         <div className="radio mt-10 bg-bar border border-rule">

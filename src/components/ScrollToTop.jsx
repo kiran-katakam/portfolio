@@ -6,7 +6,7 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     if (!hash) {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
     // Pages are lazy-loaded, so the target may not exist yet: retry briefly.

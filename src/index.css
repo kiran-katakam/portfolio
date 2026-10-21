@@ -24,12 +24,17 @@
 @layer base {
   html {
     background: #08080a;
+    scroll-behavior: smooth;
+    /* Proximity, not mandatory: long sections still scroll freely, snapping only near a section start. */
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 56px;
     scrollbar-color: #2a2a31 #08080a;
     scrollbar-width: thin;
   }
 
   body {
     @apply bg-void text-chalk font-sans antialiased;
+    overflow-x: clip;
     font-size: 16px;
     line-height: 1.6;
     font-variant-numeric: tabular-nums;
@@ -102,6 +107,16 @@
   }
 }
 
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.fade {
+  animation: fade 180ms ease-out;
+}
+
 .wipe {
   animation: wipe 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -148,6 +163,8 @@
   animation: wave 700ms ease-in-out infinite;
 }
 
+[data-go="0"] .settle,
+[data-go="0"] .tick,
 html[data-lights] .settle,
 html[data-lights] .tick,
 html[data-lights] .wipe {
@@ -155,7 +172,12 @@ html[data-lights] .wipe {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .wipe,
+  .fade,
   .settle,
   .wave > span {
     animation: none !important;

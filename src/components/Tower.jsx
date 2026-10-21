@@ -45,7 +45,8 @@ export default function Tower({ rows, active, onActive }) {
             <li key={r.to} className="border-b border-rule last:border-b-0">
               <Link
                 to={r.to}
-                onMouseEnter={() => onActive?.(i)}
+                // Only real pointer movement switches rows: scrolling under a still cursor must not.
+                onPointerMove={(e) => (e.movementX || e.movementY) && onActive?.(i)}
                 onFocus={() => onActive?.(i)}
                 aria-current={on ? "true" : undefined}
                 className={`flex items-stretch h-14 transition-colors ${on ? "bg-bar-hi" : "bg-bar hover:bg-bar-hi"}`}
@@ -63,7 +64,7 @@ export default function Tower({ rows, active, onActive }) {
                   </span>
                   <span className="flex items-center gap-3 px-3 min-w-0 flex-1">
                     <span className="font-black italic [font-stretch:62%] text-[26px] leading-none tracking-wide">{r.abbr}</span>
-                    <span className="font-bold [font-stretch:75%] uppercase text-[18px] leading-none tracking-[0.02em] truncate">{r.title}</span>
+                    <span className="font-bold [font-stretch:75%] uppercase text-[16px] sm:text-[18px] leading-none tracking-[0.02em] truncate">{r.title}</span>
                   </span>
                   <span className="flex items-center gap-4 pr-4">
                     <span className="hidden sm:block text-dim text-[14px]">{r.year}</span>

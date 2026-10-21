@@ -10,7 +10,7 @@ export default function About() {
       <title>About · Kiran Katakam</title>
       <meta name="description" content="About Kiran Katakam: Computer Science at VIT-AP, backend internships, his stack, and off-track interests in Formula 1, Minecraft and music." />
 
-      <section className="wrap pt-8 lg:pt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-end">
+      <section className="snap-start wrap pt-8 lg:pt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-end">
         <div>
           <span className="inline-block bg-chalk text-void font-black italic [font-stretch:62%] text-[clamp(40px,5vw,64px)] leading-none px-4 py-2">{profile.abbr}</span>
           <h1 className="display text-[clamp(76px,13vw,184px)] mt-6">
@@ -37,7 +37,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap mt-28 lg:mt-36">
+      <section className="snap-start wrap mt-28 lg:mt-36">
         <Heading>Off track</Heading>
         <ul className="mt-10 border-t border-rule">
           {offTrack.map((o) => (
@@ -49,7 +49,7 @@ export default function About() {
         </ul>
       </section>
 
-      <section className="wrap mt-28 lg:mt-36">
+      <section className="snap-start wrap mt-28 lg:mt-36">
         <Heading>Career</Heading>
         <ol className="mt-10 border-t border-rule">
           {career.map((c) => (
@@ -72,7 +72,7 @@ export default function About() {
         </ol>
       </section>
 
-      <section className="wrap mt-28 lg:mt-36 grid gap-16 lg:grid-cols-2">
+      <section className="snap-start wrap mt-28 lg:mt-36 grid gap-16 lg:grid-cols-2">
         <div>
           <Heading>Education</Heading>
           <ol className="mt-10 border-t border-rule">
@@ -102,7 +102,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap mt-28 lg:mt-36">
+      <section className="snap-start wrap mt-28 lg:mt-36">
         <Heading>The garage</Heading>
         <p className="mt-4 text-dim text-[17px] max-w-[56ch]">What I build with, and the machine I build on.</p>
         <div className="mt-10 grid grid-cols-2 gap-px bg-rule border border-rule lg:grid-cols-[repeat(4,1fr)_1.2fr]">
@@ -130,7 +130,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap mt-28 lg:mt-36">
+      <section className="snap-start wrap mt-28 lg:mt-36">
         <Heading>Next season</Heading>
         <p className="mt-4 text-dim text-[17px] max-w-[56ch]">What I am learning and pushing toward next.</p>
         <ul className="mt-8 flex flex-wrap gap-3">

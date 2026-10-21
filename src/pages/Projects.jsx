@@ -18,7 +18,7 @@ export default function Projects() {
       <title>Projects · Kiran Katakam</title>
       <meta name="description" content="Projects by Kiran Katakam: smart contracts, graph databases, backend APIs, data visualization and Flutter apps, each with its source." />
 
-      <section className="wrap pt-10 lg:pt-16">
+      <section className="snap-start wrap pt-10 lg:pt-16">
         <h1 className="display text-[clamp(44px,12vw,176px)]">Classification</h1>
         <p className="mt-5 text-dim text-[17px] max-w-[60ch]">
           Everything I have shipped or am building, with the source behind it. Pick a row for the full telemetry.

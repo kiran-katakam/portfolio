@@ -22,7 +22,7 @@ export default function ProjectDetail() {
       <title>{`${project.title} · Kiran Katakam`}</title>
       <meta name="description" content={project.summary} />
 
-      <section className="wrap pt-8 lg:pt-12">
+      <section className="snap-start wrap pt-8 lg:pt-12">
         <Link to="/projects" className="label inline-flex items-center gap-2 hover:text-chalk">
           <Icon name="left" className="w-3.5 h-3.5" /> Classification
         </Link>
@@ -55,7 +55,7 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      <section className="wrap mt-16" aria-label="Key facts">
+      <section className="snap-start wrap mt-16" aria-label="Key facts">
         <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-rule">
           {readout.map((f) => (
             <div key={f.key} className="border-r border-b border-rule p-5">
@@ -74,7 +74,7 @@ export default function ProjectDetail() {
         </dl>
       </section>
 
-      <section className="wrap mt-24">
+      <section className="snap-start wrap mt-24">
         <h2 className="display text-[clamp(44px,6vw,80px)]">How it works</h2>
         <ul className="mt-8 border-t border-rule">
           {project.highlights.map((h) => (
@@ -87,7 +87,7 @@ export default function ProjectDetail() {
       </section>
 
       {code && (
-        <section className="wrap mt-24">
+        <section className="snap-start wrap mt-24">
           <figure className="bg-bar border border-rule min-w-0">
             <figcaption className="flex items-center justify-between gap-4 h-10 px-4 border-b border-rule">
               <span className="label truncate">Onboard · {code.file}</span>
@@ -99,7 +99,7 @@ export default function ProjectDetail() {
       )}
 
       {screenshots?.length > 0 && (
-        <section className="wrap mt-24">
+        <section className="snap-start wrap mt-24">
           <h2 className="display text-[clamp(44px,6vw,80px)]">Screens</h2>
           <div className="mt-8 flex gap-4 overflow-x-auto pb-3">
             {screenshots.map((src, i) => (
