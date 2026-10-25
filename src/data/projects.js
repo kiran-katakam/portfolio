@@ -5,6 +5,70 @@ const GH = "https://github.com/kiran-katakam";
 
 export const projects = [
   {
+    slug: "poolup",
+    abbr: "PUP",
+    title: "PoolUP",
+    tagline: "The verified auto-pooling app for VIT-AP.",
+    year: 2026,
+    status: "live",
+    summary:
+      "Someone else is definitely going to the station right now—you just don't know them yet. Drop your timing, lock in 3 verified batchmates, and pull up to the gate paying ₹100 each.",
+    links: {
+      live: "https://poolup.kirankatakam.me",
+      repos: [
+        { label: "", url: `${GH}/poolup` }
+      ],
+    },
+    stack: ["NextJs", "MongoDB"],
+    facts: [
+      { key: "AUTH", value: "College emails only" },
+      { key: "TARGET_AUDIENCE", value: "14,000+ students" },
+      { key: "ROUTES", value: "Campus ↔ City" },
+    ],
+    highlights: [
+      {
+        title: "College-Email Verification",
+        desc: "Sign up is strictly restricted to @vitapstudent.ac.in and @vitap.ac.in emails using a one-time code or Google Auth, keeping the platform exclusively for verified batchmates.",
+      },
+      {
+        title: "Dynamic Fare Splitting",
+        desc: "As users join a pool, the estimated ₹400 auto fare automatically splits among members, dropping the per-head cost down to ₹100 for a fully matched 4-person pool.",
+      },
+      {
+        title: "Women-Only Pools",
+        desc: "Female students can create dedicated pools that are completely hidden from the general feed and only visible to and joinable by other verified women.",
+      },
+      {
+        title: "Privacy & Communication",
+        desc: "Users coordinate via a built-in pool chat. They can choose to keep their contact details private or explicitly share their WhatsApp numbers with confirmed members.",
+      },
+    ],
+    code: {
+      file: "lib/models/Pool.js",
+      url: `${GH}/poolup/blob/main/lib/models/Pool.js`,
+      source: `const schema = new mongoose.Schema({
+  from: { type: String, required: true },
+  to: { type: String, required: true },
+  departStart: { type: Date, required: true },
+  departEnd: { type: Date, required: true },
+  capacity: { type: Number, required: true, min: 2, max: 5 },
+  totalFare: { type: Number, default: 400 },
+  creator: { ...ref, required: true },
+  members: [ref],
+  sharedPhones: { type: [ref], default: [] },
+  womenOnly: { type: Boolean, default: false },
+  status: { type: String, enum: ["open", "cancelled"], default: "open" },
+  createdAt: { type: Date, default: Date.now },
+});
+
+schema.index({ status: 1, departEnd: 1 });
+// MongoDB deletes a pool 1 day after it ends.
+schema.index({ departEnd: 1 }, { expireAfterSeconds: 86400 });
+
+export default mongoose.models.Pool || mongoose.model("Pool", schema);`,
+    },
+  },
+  {
     slug: "verify-on-chain",
     abbr: "VOC",
     title: "VerifyOnChain",
